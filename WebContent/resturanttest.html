@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>table模块快速使用</title>
+		<link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+		
+		<link rel="stylesheet" type="text/css" href="js/artDialog7/css/dialog.css"/>
+	</head>
+	<style>
+		#formUser{
+			display:none;
+		} 
+	
+	</style>
+	<body>
+	<script type="text/javascript" src="js/jquery-1.11.3.js" ></script>
+	<script src="js/artDialog7/dist/dialog.js" type="text/javascript" charset="utf-8"></script>
+		<div class="layui-btn-group demoTable">
+		  <button class="layui-btn" data-type="getCheckData">一键删除</button>
+		  <button class="layui-btn" id="btnAdd">添加</button>
+		  <button class="layui-btn" id="shuxin">刷新</button>
+		</div>
+		<!-- $('#selXML').val() -->
+		<input type="button" class="layui-btn" value="导出XLS表" id="aa"/>
+
+		<!-- <input type="button" value="导出" id="aa"/> -->
+		<select id="selXML">
+			<option value="0" selected="selected">全部</option>
+			<option value="1">超值</option>
+			<option value="2">营养早餐</option>
+			<option value="3">丰富主食</option>
+			<option value="4">轻松下午茶</option>
+		</select>
+		<table class="layui-hide" id="test" lay-filter="test"></table>
+		<script src="./plugins/layui/layui.js"></script>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script>
+		$("#aa").click(function(){
+			var aid=$("#selXML").val();
+			window.location="DownloadXLS?mmtid="+aid;
+		}); 
+		</script>
+
+		<script>
+		var apps;
+		var table;
+		var box;
+		var d;
+		var delall="";
+		var updateid;
+		layui.use('table', function() {
+		table = layui.table;
+		//表格数据
+		apps={
+			tables:function(){
+				table.render({
+				    elem: '#test'
+				    ,url:'Menuaction?action=lookvalue'
+				    ,cellMinWidth: 80 
+				    ,cols: [[
+				    {type:'checkbox', fixed: 'left'}
+				      ,{field:'mid', width:80, sort: true,title:'编号'}
+				      ,{field:'mmtid', width:80,title:'类型'}
+				      ,{field:'mname', width:280,title:'名称'}
+				      ,{field:'mprice', width:177, sort: true,title:'价格'} 
+					 ,{field:'mdiscount',title:'折扣',width:100}
+					 ,{field:'mdate', width:177, sort: true,title:'日期'} 
+					 ,{field:'status',title:'状态',width:160}
+					 ,{fixed: 'right', width:170, align:'center', toolbar: '#barDemo',title:'操作'}
+				    ]]
+					,page: true
+				  });
+			}
+		};
+		apps.tables();
+			//监听工具条
+			table.on('tool(test)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+			  var data = obj.data; //获得当前行数据
+			  var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+			  var tr = obj.tr; //获得当前行 tr 的DOM对象
+			  if(obj.event === 'del'){ //删除
+				  if(confirm("真的要删除吗？")){
+			    	  var index=data.mid;
+	    				$.ajax({
+	    					type:"post",
+	    					data:{mid:index},
+	    					url:"Menuaction?action=deleteMenu",
+	    					beforeSend:function(){
+	    					},
+	    					success:function(data){
+	    						alert(data.msg);
+	    						table.reload('test', {url: 'Menuaction?action=lookvalue'});
+	    					},
+	    					error:function(xhr,textStatus,errorThrown){//错误时
+								alert(xhr+textStatus+errorThrown);
+							}
+	    				});
+			      }
+			  }else if(obj.event === 'edit'){ //编辑
+				  updateid=data.mid;
+				  d=dialog({
+		                title:"修改菜品",
+		                modal:true,
+		                backdropOpacity:0.2,
+		                width:'600px',
+		                height:'300px',
+		                content:$("#formUser")
+		            });
+		            d.show();
+		            $("#type").val(data.mmtid);
+					$("#mname").val(data.mname);
+					$("#mprice").val(data.mprice);
+					$("#mdiscount").val(data.mdiscount);
+					$("#mdate").val(data.mdate);
+					if(data.status.equals("0")){
+						$("#status").val("有余");
+					}else{
+						$("#status").val("下架");
+					}
+					
+			  }
+			});
+			
+			///复选框
+			  var $ = layui.$, active = {
+			    getCheckData: function(){ //获取选中数据
+			      var checkStatus = table.checkStatus('test')
+			      ,data = checkStatus.data;
+			      for(var i=0;i<data.length;i++){
+			    		 delall+=data[i].mid+",";
+			      }
+			      if(delall!=""){
+						if(confirm("是否要删除？")){
+							$.ajax({
+								type:"post",
+								data:{mid:delall},
+								url:"Menuaction?action=deleteAll",
+								success:function(data){
+		    						alert(data.msg);
+									table.reload('test', {url: 'Menuaction?action=lookvalue'});
+								},
+								error:function(xhr,textStatus,errorThrown){//错误时
+									alert(xhr+textStatus+errorThrown);
+								}
+							});
+						}
+					}else{
+						alert("请进行选择");
+					}
+			    }
+			  };
+			  $('.demoTable .layui-btn').on('click', function(){
+				    var type = $(this).data('type');
+				    active[type] ? active[type].call(this) : '';
+				  });
+			//////
+				var app={
+					//添加
+					add:function(){
+						$("#mname").val("");
+						$("#mprice").val("");
+						$("#mdiscount").val("");
+						$("#mdate").val("");
+						d=dialog({
+			                title:"添加菜品",
+			                modal:true,
+			                backdropOpacity:0.2,
+			                width:'600px',
+			                height:'300px',
+			                content:$("#formUser")
+			            });
+			            d.show();
+					},
+					adds:function(){
+						var type=$("#type").val();
+						var mname=$("#mname").val();
+						var mprice=$("#mprice").val();
+						var mdiscount=$("#mdiscount").val();
+						var mdate=$("#mdate").val();
+						var status=$("#status").val();
+						if(mname=="" || mprice=="" || mdiscount=="" || mdate==""){
+							alert("有些数据为空!");
+							return false;
+						}
+						 $.ajax({
+							type:"post",//请求类型
+							data:{mmtid:type,mname:mname,mprice:mprice,mdiscount:mdiscount,mdate:mdate,status:status},  //发送给后台的数据
+							url:"Menuaction?action=insertMenu" ,
+							beforeSend:function(){//请求前该做的事情
+								
+							},
+							 success:function(data){//请求成功后的事件
+								alert(data.msg);
+								table.reload('test', {url: 'Menuaction?action=lookvalue'});
+							},
+							complete:function(){//请求完成的事件，不论成功与失败
+								$("#mname").val("");
+								$("#mprice").val("");
+								$("#mdiscount").val("");
+								$("#mdate").val("");
+								d.close();
+							},
+							error:function(xhr,textStatus,errorThrown){//错误时
+								alert(xhr+textStatus+errorThrown);
+							} 
+						});
+						
+					},
+					updates:function(){
+						var type=$("#type").val();
+						var mname=$("#mname").val();
+						var mprice=$("#mprice").val();
+						var mdiscount=$("#mdiscount").val();
+						var mdate=$("#mdate").val();
+						var status=$("#status").val();
+						if(mname=="" || mprice=="" || mdiscount=="" || mdate==""){
+							alert("有些数据为空!");
+							return false;
+						}
+						$.ajax({
+							type:"post",//请求类型
+							data:{mmtid:type,mname:mname,mprice:mprice,mdiscount:mdiscount,mdate:mdate,status:status,mid:updateid},  //发送给后台的数据
+							url:"Menuaction?action=updateMenu",
+							success:function(data){//请求成功后的事件
+								alert(data.msg);
+								table.reload('test', {url: 'Menuaction?action=lookvalue'});
+							},
+							complete:function(){//请求完成的事件，不论成功与失败
+								$("#mname").val("");
+								$("#mprice").val("");
+								$("#mdiscount").val("");
+								$("#mdate").val("");
+								d.close();
+							},
+							error:function(xhr,textStatus,errorThrown){//错误时
+								alert(xhr+textStatus+errorThrown);
+							}
+						});
+						
+					},
+					func:function(){
+						$("#btnUpdate").click(function(){
+							app.updates();
+						});
+						$("#btnSave").click(function(){
+							app.adds();
+						});
+						$("#btnAdd").click(function(){
+							app.add();
+						});
+						$("#shuxin").click(function(){
+							table.reload('test', {url: 'Menuaction?action=lookvalue'});
+						});
+						
+					},
+					start:function(){
+						app.func();
+					}
+				};
+				app.start();
+		});
+		window.onload=function(){
+			var types=0;
+			$.ajax({
+				type:"post",
+				data:{mtParentClass:types},
+				url:"Menuaction?action=selectTypeAll",
+				success:function(data){
+					$.each(data, function(i, obj) {
+						var option=$("<option/>").val(obj.mtname).html(obj.mtname);
+						(option).appendTo($("#type"));
+                    });
+				},
+				error:function(xhr,textStatus,errorThrown){//错误时
+					alert(xhr+textStatus+errorThrown);
+				}
+			});
+		}
+	</script>
+	<fieldset id="formUser" style="height:260px">
+            <legend>商品信息</legend>
+            <p>
+                <label for="type">类型：</label>
+                <select id="type" name="type">
+                	
+                </select>
+            </p>
+            <p><!--for后面的指的是id-->
+                <label for="mname">名字：</label>
+                <input type="text" name="name" id="mname" placeholder="请输入姓名" />
+            </p>
+            <p>
+                <label for="mprice">价格：</label>
+                <input type="text" name="mprice" id="mprice" placeholder="请输入价格" />
+            </p>
+            <p>
+                <label for="mdiscount">折扣：</label>
+                <input type="text" name="mdiscount" id="mdiscount" placeholder="请输入折扣" />
+            </p>
+            <p>
+            	<label for="mdate">日期：</label>
+                <input type="date" id="mdate" name="mdate"/>
+            </p>
+            <p>
+                <label for="status">状态：</label>
+                <select id="status" name="status">
+                	<option value="0" selected>有余</option>
+                	<option value="1">下架</option>
+                </select>
+            </p>
+            <p>
+                <button type="button" id="btnSave">添加</button>
+                <button type="button" id="btnUpdate">修改</button>
+            </p>
+        </fieldset>
+	</body>
+	
+	<script type="text/html" id="barDemo">
+  			<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  			<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	</script>
+</html>

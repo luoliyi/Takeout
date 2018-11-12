@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>会员</title>
+	</head>
+	<link rel="stylesheet" href="js/layui/css/layui.css" />
+	<link rel="stylesheet" href="js/artDialog7/css/dialog.css">
+	<style>
+		#div_main_VIP{
+			float: left;
+			width:770px;
+			height: 600px;
+			margin:20px 0px 0px 10px;
+			position: relative;left:70px;
+		}
+		#div_left{
+			width:400px;
+			height:100px;
+			float: left;
+		}
+		#div_left1{
+			width:400px;
+			height:60px;
+		}
+		#div_left2{
+			width:400px;
+			height: 35px;
+			margin:5px 0px 0px 7px;
+		}
+		#div_right{
+			float: left;
+			margin:0px 0px 0px 5px;
+			width:360px;
+			height:100px;
+		}
+		.div_1{
+			border:1px solid lightgray;
+			width:100px;
+			height:100px;
+			float: left;
+			margin:0px 0px 0px 10px;
+		}
+		.div_1:hover{
+			cursor: pointer;
+			border: 1px solid yellow;
+		}
+		.div_2{
+			border-right:1px solid lightgray;
+			width:1px;
+			height: 90px;
+			float: left;
+			margin:5px 0px 0px 10px;
+		}
+		#div_center{
+			width:770px;
+			height: 50px;
+			float: left;
+			margin: 5px 0px 0px 0px;
+			background: #333;
+		}
+		#div_center span a{
+			display: inline-block;
+			width:100px;
+			height: 50px;
+			font-size: 20px;
+			line-height: 50px;
+			text-align: center;
+			margin-left:8px;
+		}
+		.div_center1{
+			width:238px;
+			height: 120px;
+			margin:20px 0px 0px 17px;
+			float: left;
+			background: #333;
+			
+		}
+		.div_center2{
+			width:111px;
+			height: 90px;
+			margin:20px 0px 0px 17px;
+			float: left;
+			background: #333;
+		}
+		.div_buttom{
+			width:356px;
+			height: 150px;
+			float: left;
+			margin:20px 0px 0px 17px;
+		}
+		.div_buttom:hover,.div_center2:hover,.div_center1:hover{
+			background-color: yellow;
+		}
+		.div_center2 h3,p{
+			display: inline-block;
+			margin:10px 0px 0px 10px;
+		}
+		.div_center1 h3,p{
+			display: inline-block;
+			margin:14px 0px 0px 10px;
+		}
+		.div_center2 h3,.div_center1 h3{
+			color: white;
+		}
+		.div_center2 p,.div_center1 p{
+			color: cornflowerblue;
+		}
+		.div_1 .p1{
+			color: yellow;
+		}
+		.div_1 .p2,.p3{
+			color: white;
+		}
+		#div_img{
+			width:60px;
+			height:60px;
+			float: left;
+		}
+		#div_span{
+			width:120px;
+			height: 60px;
+			float: left;
+			margin-left: 4px;
+		}
+		#div_span2{
+			width:120px;
+			height: 60px;
+			float: left;
+			margin-left: 90px;
+		}
+		#div_span span,#div_span2 span{
+			color: white;
+		}
+		#div_span,#div_span2{
+			text-align: center;
+		}
+		#div_left2_img{
+			width:17px;
+			height: 17px;
+			float: left;
+		}
+		#div_left2_img2{
+			width:17px;
+			height: 17px;
+			float: right;
+		}
+		#huiyuanmain{
+			float: left;
+			position: relative;left: 50px;
+		}
+	</style>
+	<body background="images/body.jpg">
+	<!-- <iframe src="head.html" width="100%" height="200px;" style="border: none;"></iframe> -->
+		<script type="text/javascript" src="js/jquery-1.11.3.js" ></script>
+		<script type="text/javascript" src="js/layui/layui.all.js" ></script>
+		<script type="text/javascript" src="js/layui/layui.js" ></script>
+		<script type="text/javascript" src="js/artDialog7/dist/dialog.js"></script>
+		<!-- <div id="huiyuanmain">
+			<iframe src="huiyuanmain.html" style="border: none; width: 300px;height: 600px;"></iframe>
+		</div> -->
+		<div id="div_main_VIP">
+			<div id="div_left">
+				<div id="div_left1">
+					<div id="div_img">
+						<img src="images/3.png" width="100%" height="100%">
+					</div>
+					<div id="div_span">
+						<span id="userphone">13926901506</span><br>
+						<span>139****1506</span><br>
+						<span>会员等级特权></span> 
+					</div>
+					<div id="div_span2">
+						<span>完善资料></span>
+					</div>
+				</div>
+				<div id="div_left2">
+					<div class="layui-progress layui-progress-big" lay-showPercent="true">
+					  <div class="layui-progress-bar layui-bg-blue" lay-percent="80%"></div>
+					</div>
+					<div id="div_left2_img"><img src="images/11.png" width="100%" height="100%"></div>
+					<div id="div_left2_img2"><img src="images/12.png" width="100%" height="100%"></div>
+				</div>
+			</div>
+			<div id="div_right">
+				<div class="div_1">
+					<p class="p1">余额：</p>
+					<p class="p2">0</p>
+					<p class="p3">立即充值></p>
+				</div>
+				<div class="div_2"></div>
+				<div class="div_1">
+					<p class="p1">积分：</p>
+					<p class="p2">0</p>
+					<p class="p3">积分明细></p>
+				</div>
+				<div class="div_2"></div>
+				<div class="div_1">
+					<p class="p1">优惠卷：</p>
+					<p class="p2">0</p>
+					<p class="p3">查看优惠卷></p>
+				</div>
+			</div>
+			<div id="div_center">
+				<span class="layui-breadcrumb" lay-separator="|">
+				  <a href="">全部</a>
+				  <a href="">待付款</a>
+				  <a href="">备餐中</a>
+				  <a href="">送餐中</a>
+				  <a href="">待评价</a>
+				  <a href="">已完成</a>
+				</span>
+			</div>
+			<div class="div_center1"><h3>登录密码设置</h3><p>建议你定期更改密码以保护账户安全</p></div>
+			<div class="div_center1"><h3>更换手机号码</h3><p>若手机号码更换请尽快修改</p></div>
+			<div class="div_center1"><h3>修改支付密码</h3><p>用于余额支付,请妥善保管</p></div>
+			<div class="div_center2"><h3>会员卡</h3><p>享受会员特权</p></div>
+			<div class="div_center2"><h3>天猫电子眷</h3><p>购买更优惠</p></div>
+			<div class="div_center2"><h3>积分商城</h3><p>积分兑换美食</p></div>
+			<div class="div_center2"><h3>收货地址</h3><p>有记录更方便</p></div>
+			<div class="div_center2"><h3>消费记录</h3><p>享受会员特权</p></div>
+			<div class="div_center2"><h3>会员资料</h3><p>完善赠200积分</p></div>
+			<div class="div_buttom">
+				<div class="layui-carousel" id="test1">
+				  <div carousel-item>
+				   <div><img src="images/timg6.jpg" width="100%" height="100%"></div>
+				    <div><img src="images/timg5.jpg" width="100%" height="100%"></div>
+				    <div><img src="images/11.jpg" width="100%" height="100%"></div>
+				    <div><img src="images/timg7.jpg" width="100%" height="100%"></div>
+				    <div><img src="images/timg4.jpg" width="100%" height="100%"></div>
+				  </div>
+				</div>
+			</div>
+			<div class="div_buttom" style="margin-left: 30px;">
+				<div class="layui-carousel" id="test2">
+				  <div carousel-item>
+				    <div><img src="images/timg5.jpg" width="100%" height="100%"></div>
+				    <div><img src="images/11.jpg" width="100%" height="100%"></div>
+				    <div><img src="images/timg6.jpg" width="100%" height="100%"></div>
+				    <div><img src="images/timg7.jpg" width="100%" height="100%"></div>
+				    <div><img src="images/timg4.jpg" width="100%" height="100%"></div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 隐藏的身份验证框 -->
+<fieldset id="Authentication" style="display:none;border: none">
+	<div><img alt="" src="images/degal.png"></div><br/>
+	<form id="form1">
+		<label for="phone">手机：</label><input type="text" placeholder="请输入您的手机号码"><br/> <br/>
+		<label for="password">密码：</label><input id="phone" name="phone" type="password" placeholder="请输入您的密码" ><br/><br/>
+		<label for="checknum">验证码：</label><input id="checknum" name="checknum" type="text" placeholder="请输入您的验证码" ><button id="getchecknum">获取验证码</button><br/>
+		<a href="" style="font-size: 13px;text-decoration: underline;">手机号码不可用>></a><br/><br/>
+		<input id="btnsubmit" type="submit" value="确定"><input type="reset" value="重置"><br/><br/>
+	</form>
+</fieldset>
+		<!-- <iframe src="end.html" style="float: left;height: 300px;border: none;width: 100%"></iframe> -->
+		<script>
+		layui.use('carousel', function(){
+			  var carousel = layui.carousel;
+			  //建造实例
+			  carousel.render({
+			    elem: '#test1'
+			    ,width: '356px' //设置容器宽度
+			    ,height:'150px'
+			    ,arrow: 'always' //始终显示箭头
+			    //,anim: 'updown' //切换动画方式
+			  });
+		});
+		layui.use('carousel', function(){
+			  var carousel = layui.carousel;
+			  //建造实例
+			  carousel.render({
+			    elem: '#test2'
+			    ,width: '356px' //设置容器宽度
+			    ,height:'150px'
+			    ,arrow: 'always' //始终显示箭头
+			    //,anim: 'updown' //切换动画方式
+			  });
+		});
+		layui.use('element', function(){
+		  var element = layui.element;
+		});
+		
+		var dia=null;
+		$(".div_center1").click(function(){
+			dia=dialog({
+				title:"身份验证",
+				modal:true,
+				backdropOpacity:0.5,
+				width:'500px',
+				height:'300px',
+				zIndex: 1987,
+				content:$("#Authentication")
+			});
+			dia.show();
+		})
+		/* 获取验证码 */
+		$("#getchecknum").click(function(){
+			alert("ok");
+			return false;
+		})
+		</script>
+	</body>
+</html>

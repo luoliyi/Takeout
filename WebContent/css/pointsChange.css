@@ -1,0 +1,76 @@
+	
+	.div{
+		width: 400px;
+		height:100px;
+		padding-top: 25px;
+    	background-image: url(images/VIP.png);
+    	background-repeat:no-repeat;
+    	position: relative;
+    	z-index: 1;
+   	}
+.img{
+   	width: 60px;
+	height:50px;
+	}
+	.p
+	{
+		    margin-top: 45px;
+   			 height: 45px;
+   		 line-height: 45px;
+   		 background: #4e4e4e;
+   		 font-size: 20px;
+	    color: #f9f9f9;
+  			 text-indent: 1em;
+	}
+	.div2{
+		border-left:1px solid lightgray;
+		border-width: 1px;
+		width: 400px;
+		height:80px;
+		position: relative;
+		bottom: 100px;
+		left: 260px;
+    	z-index: 1;
+	}
+	.div3
+	{
+		width:180px;
+		height: 40px;
+		position: absolute;
+		bottom:50px;
+		left: 95px;
+	}
+	#left{
+		width:100%;
+		float:left;
+		margin-right:20px;
+	}
+	#left div{
+		background-color: gainsboro;
+		width:160px;
+		float:left;
+		margin:10px;
+	}
+	#left div div
+	{
+		position: relative;
+		right:10px;
+		bottom: 10px;
+	}
+	#left div h1
+	{
+		height:30px;
+		width: 80px;
+		color: white;
+		font-size: 25px;
+		background-color: red;
+		border-radius: 30px;
+	}
+	
+	#mypoints{
+		position: relative;
+		top: 0px;
+		left: -40px;
+		color: #fff100;
+		font-size: 30px;
+	}

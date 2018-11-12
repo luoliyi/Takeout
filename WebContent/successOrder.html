@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+    <title>我的订单</title>
+    <meta charset="utf-8">
+<!--     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" /> -->
+
+<!--     <link rel="stylesheet" href="js/suimobile/css/sm.min.css" />
+    <link rel="stylesheet" href="js/suimobile/css/sm-extend.min.css" /> -->
+    <!--  以上是移动端-->
+    <link rel="stylesheet" href="js/layui/css/layui.css"  media="all"/>
+	<link rel="stylesheet" href="js/artDialog7/css/dialog.css">
+<style type="text/css">
+	#guide li{
+		font-size:23px;
+		color:white;
+		display:block;
+		float:left;
+		margin-right:40px;
+	}
+	#guide a{
+		color:white;
+	}
+	#guide a:hover,#guide li:hover{
+		color:#fff100;
+		cursor: pointer;
+	}
+	#position{
+		width: 50px;height: 20px;border-radius: 3px;background: #e60012;
+		position: relative;top: -20px;left: 75px;
+	}
+	#position span:hover{
+		cursor: pointer;
+		color: green;
+	}
+	#cartCount{
+		background: #e60012;
+		border-radius: 50px;width: 22px;
+		height: 22px;border: none;
+		text-align: center;
+		position: relative;top: -38px;left: 67px;
+		font-size: 17px;
+		line-height: 23px;
+	}
+	#maxbox{
+		position: relative;s
+		width: 950px;height: 200px;
+	}
+	#left{
+		position: relative;
+		width: 49%;height: 200px;
+		float:left;left: 50px;
+	}
+	#left li{
+		display:block;
+		float:left;
+		margin-left:20px;
+		color: white;	
+	}
+	#left a{
+		text-decoration: none;
+		color: white;
+		font-family: 微软雅黑
+	}
+	#right{
+		position: relative;
+		width: 49%;height: 200px;
+		float:right;
+	}
+	#right span,#right p{
+		color: white;
+		font-family: 微软雅黑;
+		font-size: 15px;
+	}
+	#moveright *{
+		position: relative;
+		left: -100px;
+	}
+	
+	
+	/* 中间部分 */
+	#centerDiv{
+		border: 1px solid #272727;
+		width: 1134px;height: 450px;
+		margin:auto;
+	}
+	#dind{
+		border:1px solid #fff;
+		width:1134;height:70px;
+		background-color: #fff;
+		padding:20px 30px;
+	}
+	
+	
+	#dind2{
+		
+		background-color: #fff;
+		border:1px solid #fff;
+		width:1134;height:230px;
+		padding:20px 30px;
+		margin-top:30px;
+		margin:10px 0 50px 0;
+	}
+	#dind2 .success{
+	width:27px;
+	display:inline-block;
+	vertical-align:middle;
+	margin-right:5px;
+	}
+	#dind2 h1{
+	color:#222;
+	font-weight:bold;
+	font-size:20px;
+	}
+	#dind2 p{
+	color:#4e4e4e;
+	font-size:14px;
+	margin-top:5px;
+	}
+	
+	.paytoptop{
+	width:1070px;
+	color:#4e4e4e;
+	padding:10px;
+	border-bottom:1px solid #c2c2c2;
+	}
+	
+	.paytoptop b{
+	color:#f00;
+	font-size:28px;
+	font-weight:bold;
+	}
+	.paytoptop a{
+	float:right;
+	color:#4e4e4e;
+	text-decoration:underline;
+	font-size:14px;
+	margin-top:10px;
+	}
+	a:hover{
+	color:#f00;
+	border:none;
+	}
+	.gopay{
+	width:185px;
+	height:40px;
+	line-height:40px;
+	background:#f00;
+	color:#fff;
+	text-align:center;
+	font-weight:bold;
+	font-size:22px;
+	}
+	.cursor{
+	cursor:pointer;
+	}
+	
+	.stylepay{
+	padding:20px 0;
+	}
+	ol, ul{
+	list-style:none;
+	}
+	.stylepay .balance{
+	color:#f00;
+	margin-left:15px;
+	padding-left:5px;
+	line-height:40px;
+	}
+	.balance{
+	top:20px;
+	font-size:20px;
+	}
+	.vippay{
+	width:40px;
+	height:40px;
+	margin:0 10px 0 15px;
+	font-size:17px;
+	}
+	.weixinpay{
+	width:40px;
+	height:40px;
+	margin:0 10px 0 15px;
+	font-size:18px;
+	}
+	#gotopay{
+		border-radius: 10px;
+	}
+	#gotomyorder:hover{
+		cursor: pointer;
+	}
+	#payDialog input[type='submit'],#payDialog input[type='reset']{
+			padding:10px 20px; margin-right:10px;
+		 border: none;
+		 background: orange;
+		 color: white;
+		 font-family: 微软雅黑;
+		 border-radius: 10px;
+	}
+	#payDialog input[type='submit']:hover,#payDialog input[type='reset']:hover{
+		cursor: pointer;
+		font-size: 18px;
+	}
+	#dind2 input[type='radio']{
+		width: 16px;
+		height: 16px;
+	}
+</style>
+</head>
+<body background="images/body.jpg" > 
+	<div style="float:left;padding-left: 30px">
+ 	<img alt="" src="images/degal.png">
+ 	<h1 style="color:white;font-size: 40px;font-style:oblique ">美食汇</h1>
+ 	<div style="position: relative;top: -30px;left: 160px;">
+ 		<i style="color:white;" class="layui-icon layui-icon-location"></i>
+ 		<span style="color: white;font-size: 15px;">珠海市</span>
+ 		<!--  更换-->
+ 		<div id="position">
+ 			<span style="color: white;padding-left: 10px;">更换</span>
+ 		</div>
+ 	</div>
+ </div>
+ <div>
+	<div id="guide" style="float:right;position: relative;top: 60px">
+		<ul>
+			<li><a href="" id="indexmain">首页</a></li>
+			<li><a href="" id="deliciousfood">美味菜单</a></li>
+			<li><a href="">热销促销</a></li>
+			<li><a href="" id="vipcenter">会员中心</a></li>
+			<li><a href="">购物车</a><i class="layui-icon layui-icon-cart"></i>
+				<!-- 购物车数量 -->
+				<!-- <div id="cartCount">0</div> -->
+			</li>
+			<li id="login">登录</li>
+			<li id="exit">退出</li>
+		</ul>
+	</div>
+	
+	<!-- 黄线 -->
+ <div id="yellowline">
+	<hr  style="height:5px;background:#fff100"/>
+</div> 
+</div>
+
+<div id="centerDiv">
+		<div id="dind">
+					<h1><i class="layui-icon layui-icon-auz" style="font-size: 30px; color: #00cc00;"></i>  订单提交成功，现在只差最后一步支付啦！</h1><br/>
+					<p>请您在提交订单后<b style="color:#f00;">15分钟内</b>完成支付，否则订单会自动取消哦！</p>
+		</div>
+		
+		
+	<div id="dind2">
+		<div class="paytoptop"><w style="color:#000; font-size:23px;">支付金额：</w><b class="payMoney">￥</b><b class="payMoney" id="paymoney">200.80</b><a id="gotomyorder">我的订单&gt;&gt;</a></div>
+		<ul class="stylepay">
+		
+			<li class="current">
+  			<input name="Chat" value="微信支付" title="微信支付" checked="checked" type="radio">
+				<img alt="" src="images/checktrue.jpg" width="33px" height="36px">
+				<span class=" weixinpay">微信支付</span><span class="font14 blank">更快更安全</span>
+			</li>
+			<li class="current">			
+  			<input name="Chat" value="支付宝支付" title="支付宝支付" type="radio">
+				<img alt="" src="images/zfb.jpg" width="33px" height="30px">
+				<span class=" weixinpay">支付宝支付</span><span class="font14 blank">更方便更完善</span>
+			</li>
+			
+			<li class="notclick">
+			<input name="Chat" value="会员卡余额" title="会员卡余额" type="radio">
+				<img alt="" src="images/vipcard.jpg" width="33px" height="30px">
+				<span class="vippay">会员卡余额</span>
+				<span class="font14 balance">余额不足，可用金额         ¥0</span>
+			</li>
+		</ul>
+		<div class="gopay current cursor" id="gotopay">去支付</div>
+	</div>
+</div>
+
+<div id="maxbox">
+	<div id="left">
+		<img alt="" src="images/degal.png" style="margin-left: 50px">
+		<ul>
+			<li><a href="">关于我们</a></li>
+			<li>|</li>
+			<li><a href="">法律条款</a></li>
+			<li>|</li>
+			<li><a href="">联系我们</a></li>
+			<li>|</li>
+			<li><a href="">经营公示</a></li>
+		</ul>
+		<br/><br/>
+		<span style="color:white;font-size: 15px;font-family: 微软雅黑">
+	Copyright2018 MeiShiHui 粤ICP备13066680号-1珠海美食汇餐饮管理有限公司  0755-82086666</span>
+	</div>
+	<div id="right">
+		<div  id="moveright" style="position: relative;top: 5px;left: 360px;">
+			<img alt="" src="images/phone.png">
+			<span style="font-size: 20px;font-style: oblique">139-269-01506</span>
+			<p style="font-style: oblique;font-size: 17px;">www.luoliyi.cn</p>
+			<img alt="" src="images/footera.png"><span>微信</span>
+			<img alt="" src="images/footerb.png"><span>微博</span>
+			<img alt="" src="images/footerc.png"><span>官网</span>
+		</div>
+		<div style="position: absolute;top: 130px;left: 50px;">
+			<p style="">建议使用google chrome3.4以上，IE9以上，360极速浏览器7.0以上版本，<br/>浏览器访问本网站</p>
+		</div>
+	</div>
+	</div>
+	
+<!-- 隐藏的支付框 -->
+<fieldset id="payDialog" style="display:none;border: none">
+	<div><img alt="" src="images/degal.png"></div><br/>
+	<!-- 二维码 -->
+		<span style="font-family: 微软雅黑;color: #d01b1e;font-size: 20px;">扫描二维码支付：</span><br/>
+		<div id="qrcode"></div>
+		<br/>
+	<input id="btnregeist" type="submit" value="确定"><input type="reset" value="重置"><br/><br/>
+</fieldset>
+
+
+</body>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="js/artDialog7/dist/dialog.js"></script>
+<script type="text/javascript" src="js/layui/layui.all.js" ></script>
+<script type="text/javascript" src="js/layui/layui.js" ></script>
+<!-- 二维码 -->
+<script type="text/javascript" src="jqQrcode/qrcode.js" type="text/javascript" charset="utf-8"></script>
+<!--移动端  -->
+<!-- <script type='text/javascript' src='js/suimobile/js/zepto.js' charset='utf-8'></script>
+<script type='text/javascript' src='js/suimobile/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='js/suimobile/js/sm-extend.min.js' charset='utf-8'></script> -->
+<script type="text/javascript">
+	var user=null;
+	var phonenum=null;
+
+	//二维码内容
+	var srcimg="images/wechat.png";
+	var spendmoney=null;
+	$(function(){
+		//获得对象
+		 var url = location.search; //获取url中含"?"符后的字串
+		   var theRequest = new Object();
+		   if (url.indexOf("?") != -1) {
+		      var str = url.substr(1);
+		      strs = str.split("&");
+		      for(var i = 0; i < strs.length; i ++) {
+		         theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+		      }
+		   }
+		   user=url.split('=')[2];
+		   phonenum=theRequest.user.split('?')[0];
+		   $("#login").html(phonenum+",欢迎您");
+		   
+		   //请求ajax
+		   $.ajax({
+			   url:"Takeawaycontrol.do?action=order",
+			   data:{oNumber:user},
+			   /* async:false, */
+			   success:function(data){
+				   var jsdata=JSON.parse(data);
+				   console.log(jsdata.data);
+				   //赋值
+				   $("#paymoney").html(jsdata.data.omoney);
+				   spendmoney=jsdata.data.omoney;
+				   //生成二维码,传字符串,传当前的订单信息,传到后台
+				   getCode("http://172.20.10.3:8080/Takeout/paysuccess.html?user="+user+"?spendmoney="+spendmoney);
+				   /*&user="+user+"&spendmoney="+spendmoney  */
+			   }
+		   })
+
+	   //生成二维码
+ 	    var qrCode = document.getElementById("qrcode");
+          // var txtContent = jsdata;
+           var qrcode=new QRCode(qrCode,{
+        	      render : "canvas",
+        	      width:200,
+                  height:200,
+                  text:url,
+                  correctLevel:QRCode.CorrectLevel.L,
+                  src:srcimg
+              });
+                   
+          function getCode(content) {
+              qrcode.makeCode(content);
+          } 
+	}) 
+	
+	var dia=null;
+	//var url="http://172.20.10.3:8080/Takeout/Paycontrol?action=getPayDetail&"+user+"&"+spendmoney;
+	$("#gotopay").click(function(){
+		dia=dialog({
+			title:"支付",
+			modal:true,
+			backdropOpacity:0.5,
+			width:'500px',
+			height:'400px',
+			zIndex: 1987,
+			content:$("#payDialog")
+		});
+		dia.show();
+	})
+	
+	//判断状态是否改变
+	var timer1=setInterval(function(){checkstate()},2000);
+	function checkstate(){
+		//user：订单号
+		 $.ajax({
+			   url:"Takeawaycontrol.do?action=order",
+			   data:{oNumber:user},
+			   /* async:false, */
+			   success:function(data){
+				   var jsdata=JSON.parse(data);
+				   if(jsdata.data.ostatus==1){					   
+					   dia.close().remove();//关闭对话框
+					   window.clearInterval(timer1);//清空计时器
+					   
+					   
+						//layui弹出框
+						layer.open({
+					        type: 1
+					      /*   ,offset: type  *///具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+					      /*   ,id: 'layerDemo'+type */ //防止重复弹出
+					        ,content: '<div style="padding: 20px 100px;"><i class="layui-icon layui-icon-ok-circle" style="font-size: 30px; color: #71db71;"></i> 支付成功!</div>'
+					        ,btn: '关闭'
+					        ,btnAlign: 'c' //按钮居中
+					        ,shade: 0 //不显示遮罩
+					        ,yes: function(){
+					          layer.closeAll();
+					        }
+					      });
+				   }
+			   }
+		   })
+	}
+	
+	
+	$("#btnregeist").click(function(){
+		dia.close().remove();
+	})
+	
+	$("#vipcenter").click(function(){
+		window.location.href="huiyuanmain.html?name="+phonenum;
+		return false;
+	})
+	
+	$("#gotomyorder").click(function(){
+		history.go(-1);
+	})
+	
+</script>
+</html>

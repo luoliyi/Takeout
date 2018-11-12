@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>会员资料</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	  	<link rel="stylesheet" href="js/layui/css/layui.css">
+	  	
+	  	<style type="text/css">
+	  		#checkboxs input[type="checkbox"],#checkboxs1 input[type="checkbox"],#sexradio input[type="radio"]{
+	  			height: 15px;
+	  		}
+	  		#usercenter *{
+	  			font-family: '微软雅黑';
+	  		}
+	  	</style>
+	 <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+	 </head>
+	
+	<body style="background: url('images/kfbg.jpg')">
+		<div class="fl mt10 over">
+		<div class="usercenter" style="background: transparent;">
+			<h2 class="white">会员资料</h2>
+			<div class="mar">
+				<div class="mt10"><span>* 手机：</span><span class="ml20 usergetnum" id="number">15070237082</span></div>
+				<div class="nameuser mt10"><span>* 姓名：</span><input type="text" class="usergetname" id="name" style="color:#F1F1F1;width: 80px;"></div>
+			<div class="nameuser mt10" id="sexradio">
+					<span>* 性别：</span>
+					<input name="sex" value="男" title="男" checked="checked" type="radio">男
+	  				<input name="sex" value="女" title="女" type="radio">女
+			</div><br/>
+				 <div class="layui-inline">
+			      <span> &nbsp;&nbsp;生日：</span>
+				      <div class="layui-input-inline">
+				       <input style="color: #F1F1F1; background-color: #1D1D1D; border-radius: 20px;" type="date" id="time"/>
+	 						  </div>
+			</div><br/><br/>
+		  <div>
+        <table>
+            <tr>
+                <td style="color: white;">*地区：</td>
+                <td>
+                    <select name="province" id="province">
+                        <option value="">请选择省份</option>
+                    </select>
+                    <select name="city" id="city">
+                        <option value="">请选择城市</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+   
+					<div class="nameuser mt10"><span>电子邮箱：</span><input type="text" class="usergetemail" value="240545454" width="200px;" style="width: 200px;"><span id="qq">@qq.com</span></div>
+					<div class="nameuser mt10 over" id="checkboxs">
+						<span class="fl">口味喜好：</span>
+						<div class="fl userfl flavorListone">
+						<p>
+					      <input  lay-skin="primary" title="清淡"  type="checkbox" name="text" value="清淡">清淡
+					      <input  lay-skin="primary" title="浓重" type="checkbox" name="text" value="浓重">浓重
+					      <input  lay-skin="primary" title="清淡" type="checkbox" name="text" value="滋补">滋补
+					      <input  lay-skin="primary" title="浓重" type="checkbox" name="text" value="川菜">川菜
+					      <input  lay-skin="primary" title="清淡"  type="checkbox" name="text" value="粤菜">粤菜<br/>
+					      <input  lay-skin="primary" title="浓重" type="checkbox" name="text" value="徽菜">徽菜
+					      <input  lay-skin="primary" title="浓重" type="checkbox" name="text" value="鲁菜">鲁菜
+					      <input  lay-skin="primary" title="清淡"  type="checkbox" name="text" value="苏菜">苏菜
+					      <input  lay-skin="primary" title="浓重" type="checkbox" name="text" value="闽菜">闽菜
+					      <input  lay-skin="primary" title="清淡"  type="checkbox" name="text" value="浙菜">浙菜<br/>
+					      <input  lay-skin="primary" title="浓重" type="checkbox" name="text" value="湘菜">湘菜
+						</div>	
+					</div>
+					<div class="nameuser mt10 over">
+						<span class="fl">个性标签：</span>
+						<div class="fl userfl flavorListtwo" id="checkboxs1">
+							
+					      <input  lay-skin="primary" title="清淡"  type="checkbox" name="caid" value="学生">学生
+					      <input  lay-skin="primary" title="浓重" type="checkbox" name="caid" value="上班族">上班族
+					      <input  lay-skin="primary" title="浓重" type="checkbox" name="caid" value="品质">品质
+					      <input  lay-skin="primary" title="清淡"  type="checkbox" name="caid" value="健康">健康
+					      <input  lay-skin="primary" title="浓重" type="checkbox" name="caid" value="吃货">吃货<br/>
+					      <input  lay-skin="primary" title="浓重" type="checkbox" name="caid" value="旅游">旅游
+					      <input  lay-skin="primary" title="清淡"  type="checkbox" name="caid" value="IT数码">IT数码
+					      <input  lay-skin="primary" title="浓重" type="checkbox" name="caid" value="时尚">时尚
+					      <input  lay-skin="primary" title="清淡"  type="checkbox" name="caid" value="娱乐">娱乐
+					      <input  lay-skin="primary" title="清淡" type="checkbox" name="caid" value="自由职业">自由职业
+						</div>	
+					</div>
+				</div>
+				<div class="savebtn">保存</div>
+				
+			</div>
+			
+		</div>
+		<script type="text/javascript" src="js/jquery-1.11.3.js" ></script>
+		 <script type="text/javascript">
+        $(function(){
+            //页面加载完毕后开始执行的事件
+            var city_json='{"天津市":["和平区","河东区","河西区","南开区","河北区","红桥区","塘沽区","汉沽区","大港区","东丽区","西青区","津南区","北辰区","武清区","宝坻区","宁河县","静海县","蓟县"],"北京市":["东城区", "西城区","崇文区","宣武区","朝阳区","丰台区","石景山区", "海淀区","门头沟区", "房山区","通州区","顺义区","昌平区","大兴 区","怀柔区","平谷区","密云县","延庆县"], "江苏":["南京","常州"],"河南":["南阳","安阳"],"江苏省":["南京市", "无锡市", "徐州市", "常州市", "苏州市", "南通市", "连云港市", "淮安市", "盐城市", "扬州市", "镇江市", "泰州市", "宿迁市"],"浙江省":["杭州市","宁波市", "温州市","嘉兴市", "湖州市","绍兴市","金华市","衢州市","舟山市","台州市", "丽水市"],"山西省":["太原市","大同市", "阳泉市", "长治市","晋城市", "朔州市","晋中市", "运城市","忻州市","临汾市", "吕梁市"]}';
+            
+            var city_obj=eval('('+city_json+')');
+            for (var key in city_obj)
+            {
+                $("#province").append("<option value='"+key+"'>"+key+"</option>");
+            }
+            $("#province").change(function(){
+                var now_province=$(this).val();
+                $("#city").html('<option value="">请选择城市</option>');
+                for(var k in city_obj[now_province])
+                {
+                    var now_city=city_obj[now_province][k];
+                    $("#city").append('<option value="'+now_city+'">'+now_city+'</option>');
+                }
+            });
+        });
+        $(".savebtn").click(function(){
+        	var number=$("#number").html();
+        	var name=$("#name").val();
+        	var sex=$('#sexradio input:radio[name="sex"]:checked').val();
+        	var time=$("#time").val();
+        	var address=$("#province").val()+$("#city").val();
+        	var email=$(".usergetemail").val()+$("#qq").html();
+        	var j="";
+        	var L="";
+        	$('#checkboxs input[type=checkbox]:checked').each(function(){
+        		j+=$(this).val();
+        	});
+        	$('#checkboxs1 input[type=checkbox]:checked').each(function(){
+        		L+=$(this).val();
+        	});
+        	$.ajax({
+				url:"newadd?list=menber",
+				type:"get",
+				data:{brtime:time,mname:name,madd:address,memal:email,msex:sex,mlike:L,vaccountNumber:number},
+		    	success:function(data){
+		    		alert(data.msg);
+				}
+			})
+        })
+    </script>
+			
+	</body>
+</html>

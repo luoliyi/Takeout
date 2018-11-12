@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.div{
+			width: 400px;
+			height:100px;
+			padding-top: 25px;
+	    	background-image: url(images/VIP.png);
+	    	background-repeat:no-repeat;
+	    	position: relative;
+	    	z-index: 1;
+    	}
+	.img{
+    	width: 60px;
+		height:50px;
+		}
+		.p
+		{
+			width:100%;
+			height: 40px;
+			line-height: 40px;
+			background-color: #4E4E4E;
+			color: red;	
+		}
+		.div2{
+			border-left: solid;
+			border-width: 1px;
+			width: 400px;
+			height:80px;
+			position: relative;
+			bottom: 100px;
+			left: 200px;
+	    	z-index: 1;
+		}
+		.div3
+		{
+			width:90px;
+			height: 40px;
+			position: absolute;
+			bottom:50px;
+			left: 95px;
+		}
+		#left{
+			width:100%;
+			float:left;
+			margin-right:20px;
+		}
+		#left div{
+			background-color: gainsboro;
+			width:160px;
+			float:left;
+			margin:10px;
+		}
+		#left div div
+		{
+			position: relative;
+			right:10px;
+			bottom: 10px;
+		}
+		#left div h1
+		{
+			height:30px;
+			width: 80px;
+			color: white;
+			font-size: 25px;
+			background-color: red;
+			border-radius: 30px;
+		}
+		body{
+			background-image: url(images/kfbg.jpg);
+		}
+	</style>
+	<body>
+			<div class="div">
+				&nbsp;&nbsp;&nbsp;&nbsp;<img class="img" src="images/degal.png"/>
+				<div class="div3">
+				<span id="name">用户名</span><br />
+				<span id="CAID">账号</span>
+				</div>
+				<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;<a style="font-family: 微软雅黑">积分规则</a>&nbsp;&nbsp;&nbsp;&nbsp;<a style="font-family: 微软雅黑">积分明细</a>
+			</div>
+			<div class="div2">
+				<br /><br />
+				&nbsp;&nbsp;&nbsp;我的积分:<span id="mypoints">300</span>
+			</div>
+			<h3 class="p">积分兑换商城</h3>
+			<div id="left">
+				<div align="center">
+					<div>
+						<img src="images/菜式/百事可乐.jpg" width="100%;"height="100%"/>
+					</div>
+					<span>百事可乐</span>
+					<h4>兑换积分:<span>50</span></h4>
+					<h1>兑换</h1>
+				</div>
+				<div align="center">
+					<div>
+						<img src="images/菜式/肥牛套饭.jpg" width="100%;"height="100%"/>
+					</div>
+					<span>肥牛套饭</span>
+					<h4>兑换积分: <span>100</span></h4>
+					<h1>兑换</h1>
+				</div>
+				<div align="center">
+					<div>
+						<img src="images/菜式/柠檬薏仁爽.jpg" width="100%;"height="100%"/>
+					</div>
+					<span>柠檬薏仁爽</span>
+					<h4>兑换积分: <span>130</span></h4>
+					<h1>兑换</h1>
+				</div>
+				<div align="center">
+					<div>
+						<img src="images/菜式/肉丸菜.jpg" width="100%;"height="100%"/>
+					</div>
+					<span>肉丸菜</span>
+					<h4>兑换积分: <span>250</span></h4>
+					<h1>兑换</h1>
+				</div>
+				<div align="center">
+					<div>
+						<img src="images/菜式/田园彩豆.jpg" width="100%;"height="100%"/>
+					</div>
+					<span>田园彩豆</span>
+					<h4>兑换积分: <span>200</span></h4>
+					<h1>兑换</h1>
+				</div>
+			</div>
+		<script type="text/javascript" src="js/jquery-1.11.3.js" ></script>
+		<script>
+		var list=function(){$.ajax({
+			url:"newadd?list=point",
+			type:"get",
+			success:function(data){
+				$("#name").html(data.vname).css({"font-size":"17px","font-family":"微软雅黑","color":"green"});
+				$("#CAID").html(data.vaccountNumber).css({"font-size":"15px","font-family":"微软雅黑","color":"green"});
+				$("#mypoints").html(data.vintegral).css({"font-size":"17px","font-family":"微软雅黑","color":"red"});
+			}
+		});
+		};
+		list();
+		$("#left>div>h1").click(function(){
+			var value= $(this).prev().children().html();
+			var MyJF=$("#mypoints").html();
+			if(MyJF-value<0){
+				alert("积分不足！");
+				return false;
+			}
+			$.ajax({
+				url:"newadd?list=RH",
+				type:"get",
+				data:{JF:value,mname:MyJF},
+		    	success:function(data){
+		    		alert(data.msg);
+		    		list();
+				}
+			})
+		})
+		</script>
+	</body>
+</html>

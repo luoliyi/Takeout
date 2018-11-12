@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>美食汇连锁外卖</title>
+
+<!--  图标-->
+<link rel="shortcut icon" href="//www.suning.com/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="js/layui/css/layui.css" />
+<link href="css/style.css" rel="stylesheet">
+<link href="css/index.css" rel="stylesheet">
+<style type="text/css">
+	.addtocar:hover{
+		cursor: pointer;
+		font-size: 110%;
+	}
+
+</style>
+</head>
+<body style="background:url(images/kfbg.jpg)">
+	<script type="text/javascript" src="js/layui/layui.all.js" ></script>
+	<script type="text/javascript" src="js/layui/layui.js" ></script>
+	<script type="text/javascript" src="js/jquery-1.11.3.js" ></script>
+	<!-- 头部 -->
+	<div style="float:left;padding-left: 30px">
+ 	<img alt="" src="images/degal.png">
+ 	<h1 style="color:white;font-size: 40px;font-style:oblique ">美食汇</h1>
+ 	<div style="position: relative;top: -30px;left: 160px;">
+ 		<i style="color:white;" class="layui-icon layui-icon-location"></i>
+ 		<span style="color: white;font-size: 15px;">珠海市</span>
+ 		<!--  更换-->
+ 		<div id="position">
+ 			<span style="color: white;padding-left: 10px;">更换</span>
+ 		</div>
+ 	</div>
+ </div>
+ <div>
+	<div id="guide" style="float:right;position: relative;top: 60px">
+		<ul>
+			<li><a href="indexmain1.html" id="indexmain">首页</a></li>
+			<li><a href="index.html" id="deliciousfood">美味菜单</a></li>
+			<li><a href="index.html">热销促销</a></li>
+			<li id="vipcenter">会员中心</li>
+			<li><a id="showbuycar" style="cursor: pointer;">购物车</a><i class="layui-icon layui-icon-cart"></i>
+				<!-- 购物车数量 -->
+				<div id="cartCount">0</div>
+			</li>
+			<li id="login">登录</li>
+			<!-- <li id="regsist">注册</li> -->
+			<li id="exit">退出</li>
+		</ul>
+	</div>
+	
+	<!-- 黄线 -->
+ <div id="yellowline">
+	<hr  style="height:5px;background:#fff100"/>
+</div> 
+</div>
+<br/>
+	
+	<ul id="left" class="layui-nav layui-nav-tree layui-inline layui-bg-cyan" lay-filter="demo" style="margin-right: 10px;">
+	  <li class="layui-nav-item layui-nav-itemed">
+	    <a href="javascript:;"><img src="images/1.png" width="30px" height="30px" > <span  id="1" class="no1">  超值 </span></a>
+	    <dl class="layui-nav-child" id="no1">
+	    	<!-- <dd></dd> -->
+	    </dl>
+	  </li>
+	  <li class="layui-nav-item">
+	    <a href="javascript:;"><img src="images/2.png" width="30px" height="30px"><span   id="2" class="no1">  2 </span> </a>
+	    <dl class="layui-nav-child"  id="no2">
+	      
+	    </dl>
+	  </li>
+	   <li class="layui-nav-item">
+	    <a href="javascript:;"><img src="images/3.png" width="30px" height="30px" ><span  id="3" class="no1">  3 </span> </a>
+	    <dl class="layui-nav-child"  id="no3">
+	     
+	    </dl>
+	  </li>
+	   <li class="layui-nav-item">
+	    <a href="javascript:;"><img src="images/4.png" width="30px" height="30px"><span  id="4" class="no1">  4 </span></a>
+	    <dl class="layui-nav-child"  id="no4">
+	     
+	    </dl>
+	  </li>
+	</ul>
+	<!--中间嵌套  -->
+	<div id="center">
+
+	</div>
+	<!-- 购物车 -->
+	<div id="buycar">		
+		<div id="div_main">
+		<br/>
+		<input type="button" value="购物车详情" id="input_top"/>	
+		<div id="div_list">
+		<!-- 数据动态生成 -->
+		
+		</div>
+		<div id="div_closeShopping"><span id="spanClose"><a id="clearcar" style="cursor: pointer;font-family: 微软雅黑;">清空购物车</a></span></div>
+		<div id="div_mainshop">
+			<div id="div_money">
+				<div class="div_span"><span class="span_left" >餐品总额：</span><span class="span_right" id="sumprice"></span><span style="position: relative;left: 100px;top: 5px;">元</span></div>
+				<div class="div_span"><span class="span_left" >优惠金额：</span><span class="span_right" id="discoumtprice">3</span><span style="position: relative;left: 100px;top: 5px;">元</span></div>
+				<div class="div_span"><span class="span_left" >外送费：</span><span class="span_right" id="takeoutprice">6</span><span style="position: relative;left: 115px;top: 5px;">元</span></div>
+				<div class="div_span"><span class="span_left">餐盒费：</span><span class="span_right"  id="boxprice">2</span><span style="position: relative;left: 115px;top: 5px;">元</span></div>
+				<div class="div_span"><span class="span_left" >应付金额：</span><span class="span_right" id="needprice"></span><span style="position: relative;left: 100px;top: 5px;">元</span></div>
+				<input type="button" value="进入结算" id="input_top2"/>
+				<div class="div_spanWai"><span class="span_left">送餐地址：</span><span class="span_right"><a href="#">修改</a></span></div>
+				<div class="div_spancan"><span class="span_left">白蕉南路29号南方IT学院</span></div>
+				<div class="div_spanMoney"><span class="span_left">预计30分钟后送达</span><span class="span_right"><a href="#">修改时间</a></span></div>
+			</div>	
+		</div>
+	</div>
+	
+	</div>
+	<!-- 底部嵌套 -->
+	<iframe src="end.html" style="float: left;width:100%; height: 300px;border: none;"></iframe>
+	
+	<!-- 展示详细信息 -->
+	<div id="div_MCmain" style="background: transparent; display: none;">
+			<div id="div_MC1">
+				<div id="div_MC1_picture">
+				<img src="" width='100%' height='100%'>
+				</div>
+				<div id="div_MC1_span">
+					<p id="div_name"></p>
+					<p style="color: white;">价格:<span class="span_MC1" id="price"></span></p>
+					<span style="color: white;">已售<span class="span_MC1">451</span>件</span>
+				</div>
+			</div>
+			
+			
+			<div id="div_MC2">
+				<p style="color: white;">食品销售时段<span style="color: white;">10:30-24:00</span></p>
+			</div>
+			<div id="div_MC3">
+				<!-- 动态生成 -->
+				<div class="div_MC3_div"><span id="div_MC3_name"></span></div>
+			</div>
+
+			<div id="div_MC2">
+				<p style="color: white;">食品销售时段<span style="color: white;">10:30-24:00</span></p>
+			</div>
+			<div id="div_MC3">
+				<!-- 动态生成 -->
+				<div class="div_MC3_div"><span style="color: white;">辣骨豪华单人套餐</span></div>
+				
+			</div>
+			<div id="div_MC4">
+				<div id="div_MC4_input">
+					<input type="button" value="立即购买" style="background: greenyellow;margin: 7px 0px 0px 10px;width: 100px;height: 40px;border-radius: 3px;border:none;">
+					<input type="button" value="加入购物车" style="background: #D01B1E;margin: 7px 0px 0px 10px;width: 100px;height: 40px;border-radius: 3px;border:none;color: white;">
+				</div>
+			</div>
+			<div id="div_MC5">
+				<div id="div_MC5_menu"><p style="margin: 15px 0px 0px 14px;">热销推荐</p></div>
+			</div>
+			<div id="div_MC6">
+				<div class="div_MC6_menu">
+					<div class="div_MC6_menu_picture"><img src="images/菜式/百事可乐.jpg" width="100%" height="100%"></div>
+					<p style="margin: 10px 0px 0px 20px;">百事可乐</p>
+					<p style="margin: 10px 0px 0px 24px;">￥8</p>
+				</div>
+				<div class="div_MC6_menu">
+					<div class="div_MC6_menu_picture"><img src="images/菜式/金杏蜜桃汁.jpg" width="100%" height="100%"></div>
+					<p style="margin: 10px 0px 0px 20px;">金杏蜜桃汁</p>
+					<p style="margin: 10px 0px 0px 24px;">￥30</p>
+				</div>
+				<div class="div_MC6_menu">
+					<div class="div_MC6_menu_picture"><img src="images/菜式/柠檬薏仁爽.jpg" width="100%" height="100%"></div>
+					<p style="margin: 10px 0px 0px 20px;">柠檬薏仁爽</p>
+					<p style="margin: 10px 0px 0px 24px;">￥18</p>
+				</div>
+				<div class="div_MC6_menu">
+					<div class="div_MC6_menu_picture"><img src="images/菜式/卤肉套饭.jpg" width="100%" height="100%"></div>
+					<p style="margin: 10px 0px 0px 20px;">卤肉套饭</p>
+					<p style="margin: 10px 0px 0px 24px;">￥28</p>
+				</div>
+			</div>
+		</div>
+	
+	<script>
+	layui.use('element', function(){
+	  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+	  
+	  //监听导航点击
+	  element.on('nav(demo)', function(elem){
+	    //console.log(elem)
+	    layer.msg(elem.text());
+	  });
+	});
+	$("#vipcenter").click(function(){
+		//跳转
+		window.location.href="huiyuanmain.html";
+	})
+	$("#indexmain").click(function(){
+		//父窗体跳转
+		window.location.href="indexmain1.html";
+	})
+	var user=null;//账号
+	$(function(){
+		 var url = location.search; //获取url中含"?"符后的字串
+		   var theRequest = new Object();
+		   if (url.indexOf("?") != -1) {
+		      var str = url.substr(1);
+		      strs = str.split("&");
+		      for(var i = 0; i < strs.length; i ++) {
+		         theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+		      }
+		   }
+		   user=theRequest.name;
+		   $("#login").html(user+",欢迎您");
+		   
+		 //窗体加载数据用的	
+		  showfood(4);
+		
+	})
+	
+	/* 显示，隐藏购物车 */
+	$("#showbuycar").click(function(){
+		showCar();
+	})
+	/* 显示，隐藏购物车 */
+	function showCar(){
+		$("#buycar").toggle();
+		$("#cartCount").toggle();
+		return false;
+	}
+	
+	//请求首页菜单
+	$.ajax({
+		url:"Initialisecontrol.do?action=menuTypeMenu",
+		success:function(data){	
+			 var jsondata=JSON.parse(data);
+			 menuType1(jsondata.data)
+		}
+	})
+
+	//加载首页菜单
+	var datas1=["#no2","#no3","#no4"];
+	function menuType1(data,father){
+		for(var i=0; i<data.length; i++){
+			$(".no1")[i].innerHTML=data[i].mtname;
+			if(data[i].subclass.length>0){
+				for(var j=0;j<data[i].subclass.length;j++){
+					$(datas1[i-1]).append("<dd id="+data[i].subclass[j].mtid+" style='text-indent:3em;margin:5px auto'>"+data[i].subclass[j].mtname+"</dd>");
+				}
+			}
+		}
+	}
+	
+	function showfood(id){
+		//清空
+		$("#center").html("");
+		var tid=1;
+		tid=id;
+		//console.log(tid);
+		$.ajax({
+			url:"Initialisecontrol.do?action=typeMenu",
+			data:{menuTypeid:tid},
+			success:function(data){
+				var jsondata=JSON.parse(data);
+				console.log(jsondata.data)
+	
+				for(var i=0;i<jsondata.data.length;i++){
+					var foodname=jsondata.data[i].mname;
+					var foodprice=jsondata.data[i].mprice;
+					var foodmid=jsondata.data[i].mid;
+					
+					var maxdivs=$("<div style='float:left' class='foodshow'/>");
+					$("<img src='images/菜式/"+foodname+".jpg' width='200px'height='200px'>").appendTo($(maxdivs));
+					
+					var divs=$('<div style="width: 200px;text-align: center;background: #eaeaea" ></div>');
+						
+					$("<h3>"+foodname+"</h3>").appendTo($(divs));
+					var span=$('<span style="color: #d01b1e;font-size: 15px;">¥</span>');
+					$('<b style="color: #d01b1e;font-size: 15px">'+foodprice+'</b>').appendTo($(span));
+					$(span).appendTo($(divs));
+					
+					//保存菜的mid
+					$("<div></div>").html("<button class='addtocar'>加入购物车</button>").data("menuid",foodmid).appendTo($(divs))
+					
+					$(divs).appendTo($(maxdivs));
+					
+					$("#center").append($(maxdivs));
+				}
+			}
+		})
+	}
+	
+	//绑定方法
+	$("#left").on("click","dd", function(){
+		showfood($(this).prop("id"));
+	});
+	
+	/* 把菜加到购物车 */
+	$("#center").on("click",".addtocar",function(){
+		var menuid=$(this).parent().data("menuid");
+		//购物车展示
+		$("#cartCount").css("display","block");
+		$("#cartCount").html(parseInt($("#cartCount").html())+1);
+		
+		$.ajax({
+			url:"Takeawaycontrol.do?action=addToCart",
+			data:{menuid:menuid},
+			//加入购物车成功，实时查询购物车数据
+			success:function(data){
+				//layui弹出框
+				layer.open({
+			        type: 1
+			      /*   ,offset: type  *///具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+			      /*   ,id: 'layerDemo'+type */ //防止重复弹出
+			        ,content: '<div style="padding: 20px 100px;"><i class="layui-icon layui-icon-ok-circle" style="font-size: 30px; color: #71db71;"></i> 加入购物车成功</div>'
+			        ,btn: '关闭'
+			        ,btnAlign: 'c' //按钮居中
+			        ,shade: 0 //不显示遮罩
+			        ,yes: function(){
+			          layer.closeAll();
+			        }
+			      });
+				
+			}
+		})
+	})
+	$("#showbuycar").click(function(){
+		//清空
+		$("#div_list").html("");
+		$("#cartCount").css("display","block");
+		//查询购物车数据
+		$.ajax({
+			url:"Takeawaycontrol.do?action=showCart",
+			success:function(cardata){
+				var jsondata=JSON.parse(cardata);
+				var arr=jsondata.data;
+				//餐品总额
+				var sumprice=0;
+				//购物车总数
+				var carcount=0;
+				//组合数据				
+				for (var i = 0; i < arr.length; i++) {
+					console.log(arr[i].scmenu);
+					//总额加起来
+					sumprice+=arr[i].mprice;
+					carcount+=1;						
+					var div1=$("<div class='div_lists'></div>");
+					var div2=$("<div class='div_image'><img src='images/菜式/"+arr[i].mname+".jpg' width='100%' height='100%''></div>");
+					var div3=$("<div class='div_imagetop'><span class='span_imagetop'>"+arr[i].mname+"</span></div>");
+					var div4=$("<div class='div_imagebottom'></div>");
+					var div5=$("<div class='div_imagebottomleft'><span class='span_imagetop'><i class='layui-icon layui-icon-rmb'></i>"+arr[i].mprice+"</div>");
+					var div6=$("<div class='div_imagebottomright'></div>");
+					var a1=$("<a href='#'><div class='div_jian'>-</div></a>").data("foodid",arr[i].scmenu).data("foodprice",arr[i].mprice);
+					var span=$("<span class='span_jianjia'>"+arr[i].scquantity+"</span>");
+					var a2=$("<a href='#'><div class='div_jia'>+</div></a>").data("foodid",arr[i].scmenu).data("foodprice",arr[i].mprice);
+					
+					$(div4).append($(div5));
+					$(div6).append($(a1)).append($(span)).append($(a2)).appendTo($(div4));
+					$(div1).append($(div2)).append($(div3)).append($(div4));
+					$("#div_list").append($(div1));
+					
+				}	
+				//总额赋值
+				$("#sumprice").html(sumprice);
+				$("#cartCount").html(carcount);
+				
+				var erwaiMoney=parseInt($("#takeoutprice").html())+parseInt($("#boxprice").html());
+				var daze=parseInt(($("#sumprice").html())-parseInt($("#discoumtprice").html()));
+				
+				var  summoney=parseInt(erwaiMoney)+parseInt(daze);
+				$("#needprice").html(summoney);
+				
+			}
+		})
+	})
+	
+	
+	/*减菜 加菜 */
+	var scmenu=1; //保存菜的id
+	$("#div_list").on("click",".div_jian",function(){
+		var self=this;
+		 scmenu=$(this).parent().data("foodid");
+		 //把菜价获得
+		 var foodprice=$(this).parent().data("foodprice");
+		 var foodprice2=parseInt($("#sumprice").html()-parseInt(foodprice));
+		 $("#sumprice").html(foodprice2);
+		 $("#needprice").html(parseInt($("#needprice").html()-parseInt(foodprice)));
+		 
+		 
+		$.ajax({
+			url:"Takeawaycontrol.do?action=selfReduction",
+			data:{menuid:scmenu},
+			success:function(data){
+				var jsondata=JSON.parse(data);
+				if(jsondata.code==0){
+					var count=$(self).parent().next().html();
+					if(count==1){
+						$(self).parents(".div_lists").remove();
+					} else{
+						var c = parseInt(count)-1;
+						$(self).parent().next().html(c);
+					}
+				}
+			}
+		}) 
+		
+		$("#carCount").html();
+	})
+	$("#div_list").on("click",".div_jia",function(){
+		var self=this;
+		scmenu=$(this).parent().data("foodid");
+		
+		 //把菜价获得
+		 var foodprice=$(this).parent().data("foodprice");
+		 var foodprice2=parseInt((parseInt($("#sumprice").html()))+(parseInt(foodprice)));
+		 $("#sumprice").html(foodprice2);
+		 
+		 $("#needprice").html(parseInt(foodprice2)+5);		
+		
+		$.ajax({
+			url:"Takeawaycontrol.do?action=addToCart",
+			data:{menuid:scmenu},
+			success:function(data){
+				var jsondata=JSON.parse(data);
+				if(jsondata.code==0){
+					var count=$(self).parent().prev().html();
+					var c = parseInt(count)+1;
+					$(self).parent().prev().html(c);
+				}
+			}
+		})
+		
+	})
+	
+	/* 结账 */	
+	$("#input_top2").click(function(){
+		window.location.href="OrderContents.html";
+	})
+	
+	/*  清空购物车*/
+	$("#clearcar").click(function(){
+		//总价为0
+		$("#needprice").html("0");
+		$("#cartCount").css("display","none");
+		$.ajax({
+			url:"Takeawaycontrol.do?action=emptyVipCart",
+			beforeSend:function(){
+				if(!confirm("确定要清除购物车?")){
+					return false;
+				}
+			},
+			success:function(cardata){
+				//刷新
+				$("#showbuycar").click();
+			}			
+		})
+	})	
+	
+	//图片点击跳转
+	var divcontent=$("#div_MCmain");
+	var div_name=$("#div_MC3");
+	$("#center").on("click","img",function(){
+		var k=$(this).next();
+		//转换成DOM对象
+		var KI=k.get(0).getElementsByTagName("h3")[0];
+		var name=KI.innerText;
+		var b=k.get(0).getElementsByTagName("b")[0];
+		var price=b.innerText;
+		
+		divcontent.find("#div_MC1_picture").find("img").prop("src","images/菜式/"+name+".jpg");
+		//先把点击信息获得，赋值
+		divcontent.find("#div_name").html(name).css("color","white");
+		divcontent.find("#price").html("￥"+price).css("color","white");;
+		div_name.find("#div_MC3_name").html(name).css("color","white");;
+		divcontent.css("display","block");
+		$("#center").html(divcontent);
+	})
+	
+	/*点击会员中心跳转，带值*/
+	$("#vipcenter").click(function(){
+		var user=$("#login").html().split(',')[0];
+		window.location.href="huiyuanmain.html?name="+user;
+	})
+	
+	$("#exit").click(function(){
+		window.location.href="indexmain1.html";
+	})
+	
+	</script>
+</body>
+</html>

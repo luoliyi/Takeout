@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>会员主界面</title>
+		<link rel="stylesheet" href="js/layui/css/layui.css" />
+		<link rel="stylesheet" href="css/huiyuanindex.css">
+		<link rel="stylesheet" href="js/artDialog7/css/dialog.css">	
+		
+		<!--  图标-->
+		<link rel="shortcut icon" href="//www.suning.com/favicon.ico" type="image/x-icon">
+		<!--  会员主体-->
+		<link rel="stylesheet" href="css/huiyuan.css">
+		
+		<!--  订单-->
+		<link rel="stylesheet" href="css/myorderrs.css">
+		<style type="text/css">
+			#div_centerOrderrs span{
+				font-size: 13px;
+				font-family: 微软雅黑;
+				color:#e7141a;
+			}
+		</style>
+	</head>
+	<body style="background:url(images/kfbg.jpg)">
+		<script type="text/javascript" src="js/jquery-1.11.3.js" ></script>
+		<script type="text/javascript" src="js/layui/layui.all.js" ></script>
+		<script type="text/javascript" src="js/layui/layui.js" ></script>
+		<script type="text/javascript" src="js/artDialog7/dist/dialog.js"></script>
+		<!-- 头部嵌套 -->
+		<!-- <iframe src="head.html" width="100%" height="200px;" style="border: none;"></iframe> -->
+		
+		<div style="float:left;padding-left: 30px">
+ 		<img alt="" src="images/degal.png">
+		<h1 style="color:white;font-size: 40px;font-style:oblique ">美食汇</h1>
+		<div style="position: relative;top: -30px;left: 160px;">
+		<i style="color:white;" class="layui-icon layui-icon-location"></i>
+		<span style="color: white;font-size: 15px;">珠海市</span>
+		<!--  更换-->
+		<div id="position">
+			<span style="color: white;padding-left: 10px;">更换</span>
+				</div>
+			</div>
+		</div>
+		<div>
+		<div id="guide" style="float:right;position: relative;top: 60px">
+		<ul>
+			<li><a  id="indexmain">首页</a></li>
+		<li><a  id="deliciousfood">美味菜单</a></li>
+		<li><a >热销促销</a></li>
+		<li><a  id="vipcenter">会员中心</a></li>
+		<li><a >购物车</a><i class="layui-icon layui-icon-cart"></i>
+			<!-- 购物车数量 -->
+					<!-- <div id="cartCount">0</div> -->
+				</li>
+				<li id="login">登录</li>
+				<!-- <li id="regsist">注册</li> -->
+				<li id="exit">退出</li>
+			</ul>
+		</div>
+		
+		<!-- 黄线 -->
+		<div id="yellowline">
+		<hr  style="height:5px;background:#fff100"/>
+		</div> 
+		</div>
+		
+		<!-- 隐藏的登录框 -->
+		<fieldset id="loginDialog" style="display:none;border: none"><legend>登录</legend>
+			<form id="form1">
+				<label for="phone">手机：</label><label for="phone">手机：</label><br/> 
+				<label for="phone">手机：</label><input id="phone" name="phone" type="password" placeholder="请输入您的密码" ><br/>
+				<input type="submit" value="提交"><input type="reset" value="重置"><br/>
+			</form>
+		</fieldset>
+			
+		
+		<div id="div_main" style="background:url(images/usercenterbg.jpg);">
+			<div id="div_top">
+				<p style="margin-top: 10px;margin-left: 25px;font-size: 30px;color: yellow;">会员<span style="color: white;">中心</span></p>
+				<p style="margin-top: 10px;margin-left: 25px;font-size: 23px;color: red;">Member Center</p>
+			</div>
+			<div id="div_bottom">
+				<ul  class="layui-nav layui-nav-tree layui-bg-cyan"slay-filter="test" style="background: transparent;">
+				  <li class="layui-nav-item"><a href="" id="myvipcard">我的会员卡</a></li>
+				  <li class="layui-nav-item"><a href="">我的卡包</a></li>
+				  <li class="layui-nav-item"><a href="" id="mypoint">我的积分</a></li>
+				  <li class="layui-nav-item"><a href="" id="myorder">我的订单</a></li>
+				  <li class="layui-nav-item"><a href="" id="myPj">我的评价</a></li>
+				  <li class="layui-nav-item"><a href="" id="newAddress">收货地址</a></li> 
+				  <li class="layui-nav-item"><a href="" id="spendList">消费记录</a></li>
+				  <li class="layui-nav-item"><a href="" id="membership">会员资料</a></li>
+				  <li class="layui-nav-item"><a href="" id="hyzc">会员章程</a></li>
+				</ul>
+			</div>
+		</div>
+		<!--  右边嵌套-->
+		<div id="rightCenter">
+			<iframe id="nested" src="" style=" display:none; border:none;float: left;width: 1000px;height:700px"></iframe>
+			
+			
+			<!-- 会员主界面 -->
+		<div id="div_main_VIP" style="display: block;">
+				<div id="div_left">
+					<div id="div_left1">
+						<div id="div_img">
+							<img src="images/头像.jpeg" width="100%" height="100%">
+						</div>
+						<div id="div_span">
+							<span id="userphone" style="font-size: 18px;color: orange;">13926901506</span><br><br/>
+							<span>会员等级特权></span> 
+						</div>
+						<div id="div_span2">
+							<span>完善资料></span>
+						</div>
+					</div>
+					<div id="div_left2">
+						<div class="layui-progress layui-progress-big" lay-showPercent="true">
+						  <div class="layui-progress-bar layui-bg-blue" lay-percent="80%"></div>
+						</div>
+						<div id="div_left2_img"><img src="images/11.png" width="100%" height="100%"></div>
+						<div id="div_left2_img2"><img src="images/12.png" width="100%" height="100%"></div>
+					</div>
+				</div>
+				<div id="div_right">
+					<div class="div_1">
+						<p class="p1">余额：</p>
+						<p class="p2" id="yuer">0</p>
+						<p class="p3">立即充值></p>
+					</div>
+					<div class="div_2"></div>
+					<div class="div_1">
+						<p class="p1">积分：</p>
+						<p class="p2" id="jifen">0</p>
+						<p class="p3">积分明细></p>
+					</div>
+					<div class="div_2"></div>
+					<div class="div_1">
+						<p class="p1">优惠卷：</p>
+						<p class="p2">0</p>
+						<p class="p3">查看优惠卷></p>
+					</div>
+				</div>
+				<div id="div_center">
+					<span class="layui-breadcrumb" lay-separator="|">
+					  <a href="">全部</a>
+					  <a href="">待付款</a>
+					  <a href="">备餐中</a>
+					  <a href="">送餐中</a>
+					  <a href="">待评价</a>
+					  <a href="">已完成</a>
+					</span>
+				</div>
+				<div class="div_center1"><h3>登录密码设置</h3><p>建议你定期更改密码以保护账户安全</p></div>
+				<div class="div_center1"><h3>更换手机号码</h3><p>若手机号码更换请尽快修改</p></div>
+				<div class="div_center1"><h3>修改支付密码</h3><p>用于余额支付,请妥善保管</p></div>
+				<div class="div_center2"><h3>会员卡</h3><p>享受会员特权</p></div>
+				<div class="div_center2"><h3>天猫电子眷</h3><p>购买更优惠</p></div>
+				<div class="div_center2"><h3>积分商城</h3><p>积分兑换美食</p></div>
+				<div class="div_center2"><h3>收货地址</h3><p>有记录更方便</p></div>
+				<div class="div_center2"><h3>消费记录</h3><p>享受会员特权</p></div>
+				<div class="div_center2"><h3>会员资料</h3><p>完善赠200积分</p></div>
+				<div class="div_buttom">
+					<div class="layui-carousel" id="test1">
+					  <div carousel-item>
+					   <div><img src="images/diaocha.jpg" width="100%" height="100%"></div>
+					    <div><img src="images/timg5.jpg" width="100%" height="100%"></div>
+					    <div><img src="images/11.jpg" width="100%" height="100%"></div>
+					    <div><img src="images/timg7.jpg" width="100%" height="100%"></div>
+					    <div><img src="images/timg4.jpg" width="100%" height="100%"></div>
+					  </div>
+					</div>
+				</div>
+				<div class="div_buttom" style="margin-left: 30px;">
+					<div class="layui-carousel" id="test2">
+					  <div carousel-item>
+					    <div><img src="images/timg5.jpg" width="100%" height="100%"></div>
+					    <div><img src="images/11.jpg" width="100%" height="100%"></div>
+					    <div><img src="images/timg6.jpg" width="100%" height="100%"></div>
+					    <div><img src="images/timg7.jpg" width="100%" height="100%"></div>
+					    <div><img src="images/diaocha.jpg" width="100%" height="100%"></div>
+					  </div>
+					</div>
+				</div>
+			</div>
+					<!-- 隐藏的身份验证框 -->
+<fieldset id="Authentication" style="display:none;border: none">
+	<div><img alt="" src="images/degal.png"></div><br/>
+	<form id="form1">
+		<label for="phone">手机：</label><input type="text" placeholder="请输入您的手机号码"><br/> <br/>
+		<label for="password">密码：</label><input id="phone" name="phone" type="password" placeholder="请输入您的密码" ><br/><br/>
+		<label for="checknum">验证码：</label><input id="checknum" name="checknum" type="text" placeholder="请输入您的验证码" ><button id="getchecknum">获取验证码</button><br/>
+		<a href="" style="font-size: 13px;text-decoration: underline;">手机号码不可用>></a><br/><br/>
+		<input id="btnsubmit" type="submit" value="确定"><input type="reset" value="重置"><br/><br/>
+	</form>
+</fieldset>
+		
+		<!-- 订单界面 -->
+		<div id="div_mainOrderrs" style="display: none;">
+			<ul class="layui-nav layui-bg-green" lay-filter="">
+			  <li class="layui-nav-item layui-this"><a href="#">全部</a></li>
+			  <li class="layui-nav-item"><a href="#">待付款</a></li>
+			  <li class="layui-nav-item"><a href="#">备餐中</a></li>
+			  <li class="layui-nav-item"><a href="#">送餐中</a></li>
+			  <li class="layui-nav-item"><a href="#">待评价</a></li>
+			  <li class="layui-nav-item"><a href="#">已完成</a></li>
+			</ul>
+			<div id="div_centerOrderrs"><span id="span1">下单时间</span><span id="span2">订单内容</span><span id="span3">
+				支付金额(元)</span><span id="span4">状态</span><span id="span5">交易操作</span></div>
+			<div id="div_bottomOrderrs">
+				<ul class="layui-timeline" id="ulAdd">
+				  
+		<!-- 		  <li class="layui-timeline-item">
+				    <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+				    <div class="layui-timeline-content layui-text">
+				      <div class="layui-timeline-title">7月14日</div>
+				      <div class="div_dd">
+				        	<div class="div_dd_content"><img src="images/菜式/茄子饭.jpg" width="100%" height="100%"></div>
+				        	<div class="div_dd_content_right">
+				        		<span class="div_dd_content_right_span1">酱香花腩排骨双人餐GFS等共5个餐品</span><br>
+				        		<span class="div_dd_content_right_span">订单号:5160444501</span><br>
+				        		<span class="div_dd_content_right_span"><i class="layui-icon layui-icon-engine"></i>16:04:44</span>
+				        	</div>
+				        	<div class="div_dd_content_span1">
+				        		<span class="div_dd_content_right_span1_span">218.98</span><br>
+				        		<span class="div_dd_content_right_span_span">余额支付</span><br>
+				        	</div>
+				        	<div class="div_dd_content_span2">
+				        		<span class="div_dd_content_right_span1_span">已完成</span><br>
+				        	</div>
+				        	<div class="div_dd_content_span3">
+				        		<button class="layui-btn">
+								  订单详情
+								</button><br>
+								<button class="layui-btn" style="width: 92px;">
+								 已完成   
+								</button>
+				        	</div>
+				        </div>
+				    </div>
+				  </li> -->
+				  
+				</ul>
+			</div>
+		</div>
+		
+		</div>
+		<br/>
+		<!-- 底部嵌套 -->
+		<iframe src="end.html" style="float: left;height: 580px;border: none; " width="100%"></iframe>
+		<script>
+			layui.use('element', function(){
+			  var element = layui.element;
+			  
+			  //…
+			});
+			//注意：导航 依赖 element 模块，否则无法进行功能性操作
+			layui.use('element', function(){
+			  var element = layui.element;
+			});
+			layui.use('carousel', function(){
+				  var carousel = layui.carousel;
+				  //建造实例
+				  carousel.render({
+				    elem: '#test1'
+				    ,width: '356px' //设置容器宽度
+				    ,height:'150px'
+				    ,arrow: 'always' //始终显示箭头
+				    //,anim: 'updown' //切换动画方式
+				  });
+			});
+			layui.use('carousel', function(){
+				  var carousel = layui.carousel;
+				  //建造实例
+				  carousel.render({
+				    elem: '#test2'
+				    ,width: '356px' //设置容器宽度
+				    ,height:'150px'
+				    ,arrow: 'always' //始终显示箭头
+				    //,anim: 'updown' //切换动画方式
+				  });
+			});
+			layui.use('element', function(){
+			  var element = layui.element;
+			});
+			
+			var dia=null;
+			$(".div_center1").click(function(){
+				dia=dialog({
+					title:"身份验证",
+					modal:true,
+					backdropOpacity:0.5,
+					width:'500px',
+					height:'300px',
+					zIndex: 1987,
+					content:$("#Authentication")
+				});
+				dia.show();
+			})
+			/* 获取验证码 */
+			$("#getchecknum").click(function(){
+				alert("ok");
+				return false;
+			})
+			
+			$("#vipcenter").click(function(){
+				//父窗体跳转
+				window.location.href="huiyuanmain.html";
+			})
+			$("#deliciousfood").click(function(){
+				//父窗体跳转
+				window.location.href="index.html?name="+user;
+			})
+			$("#indexmain").click(function(){
+				//父窗体跳转
+				window.location.href="indexmain1.html";
+			})
+			
+			
+			/* 嵌套操作 */
+			/* $("#myvipcard").click(function(){
+				$("#div_main_VIP").css("display","block");
+				$("#nested").css("display","block");;
+				return false;
+			}) */
+			$("#myorder").click(function(){
+				$("#div_main_VIP").css("display","none");
+				$("#nested").css("display","none");
+				//$("#nested").attr('src','myorderrs.html').css("display","block");;
+				$("#div_mainOrderrs").css("display","block");
+				return false;
+			})
+			$("#mypoint").click(function(){
+				$("#div_main_VIP").css("display","none");
+				$("#div_mainOrderrs").css("display","none");
+				$("#nested").attr('src','pointsChange.html').css("display","block");;
+				return false;
+			})
+			$("#membership").click(function(){
+				$("#div_main_VIP").css("display","none");
+				$("#div_mainOrderrs").css("display","none");
+				$("#nested").attr('src','membership.html').css("display","block");;
+				return false;
+			})
+			$("#spendList").click(function(){
+				$("#div_main_VIP").css("display","none");
+				$("#div_mainOrderrs").css("display","none");
+				$("#nested").attr('src','spendList.html').css("display","block");
+				return false;
+			})
+			$("#myPj").click(function(){
+				$("#div_main_VIP").css("display","none");
+				$("#div_mainOrderrs").css("display","none");
+				$("#nested").attr('src','myPj.html').css("display","block");;
+				return false;
+			})
+			$("#hyzc").click(function(){
+				$("#div_main_VIP").css("display","none");
+				$("#div_mainOrderrs").css("display","none");
+				$("#nested").attr('src','hyzc.html').css("display","block");;
+				return false;
+			})
+			$("#newAddress").click(function(){
+				$("#div_main_VIP").css("display","none");
+				$("#div_mainOrderrs").css("display","none");
+				$("#nested").attr('src','newAddress.html');
+				return false;
+			})
+			
+			/* 操作数据 */
+			var user=null;
+			$(function(){
+				 var url = location.search; //获取url中含"?"符后的字串
+				   var theRequest = new Object();
+				   if (url.indexOf("?") != -1) {
+				      var str = url.substr(1);
+				      strs = str.split("&");
+				      for(var i = 0; i < strs.length; i ++) {
+				         theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+				      }
+				   }
+				   user=theRequest.name;
+				   $("#login").html(user+",欢迎您");
+				   console.log(theRequest);
+				   
+				  //ajax请求后台,获得会员的资料
+				  $.ajax({
+					  url:"Takeawaycontrol.do?action=vipInfo",
+					  success:function(data){
+						  var jsdata=JSON.parse(data);
+						  console.log(jsdata.data);
+						  //赋值
+						  $("#userphone").html(jsdata.data.vaccountNumber);
+						  $("#yuer").html(jsdata.data.vbalance);
+						  $("#jifen").html(jsdata.data.vintegral);
+					  }
+				  })
+				  
+	  		    //ajax请求后台，获得会员的订单
+				  $.ajax({
+					  url: "Takeawaycontrol.do?action=vipAllorders" ,
+					 /*  data:{oNumber:'0724153609665332'}, */
+					  success:function(data){
+						  var jsdata=JSON.parse(data);
+						  console.log("所有订单的数据如下：")
+						  console.log(jsdata.data);
+						  //赋值
+						  var day=null;
+						  var mintue=null;
+						  var numbers=null;
+						  var money=null;
+						  for (var i = 0; i < jsdata.data.length; i++) {
+							  //日期赋值
+							  day=jsdata.data[i].oorderDate.split(' ')[0];
+							  //时间赋值
+							  mintue=jsdata.data[i].oorderDate.split(' ')[1];
+							  //订单号
+							  numbers=jsdata.data[i].oNumber;
+							  //价格赋值
+							  money=jsdata.data[i].omoney;		
+							  
+							  var foodname01="";
+							  $.ajax({
+								  url:"Takeawaycontrol.do?action=ordersMenu",
+								  async:false, //非异步，改成同步
+								  data:{oNumber:numbers},
+								  success:function(data){
+									  console.log("订单里面的信息：");
+									  var jscontent=JSON.parse(data);
+									  for (var j = 0; j < jscontent.data.length; j++) {
+										  //console.log(jscontent.data[j].coNumber)
+										  foodname01+=jscontent.data[j].coNumber+",";
+									}
+									 
+								  }
+							  })
+							  
+							//做成一个大的字符串
+							var content=$('<li class="layui-timeline-item"><i class="layui-icon layui-timeline-axis">&#xe63f</i><div class="layui-timeline-content layui-text"><h3 class="layui-timeline-title">'+day+'</h3><div class="div_dd"><div class="div_dd_content"><img src="images/菜式/'+foodname01.split(',')[0]+'.jpg" width="100%" height="100%"></div><div class="div_dd_content_right"><span class="div_dd_content_right_span1" style="font-family:微软雅黑;font-size:16px;">'+foodname01.substring(0,foodname01.length-1)+'</span><br><span class="div_dd_content_right_span">订单号:'+numbers+'</span><br><span class="div_dd_content_right_span"><i class="layui-icon layui-icon-engine"></i>'+mintue+'</span></div><div class="div_dd_content_span1"><span class="div_dd_content_right_span1_span" style="font-family:微软雅黑">'+money+'</span><br><span class="div_dd_content_right_span_span">余额支付</span><br></div><div class="div_dd_content_span2"><span class="div_dd_content_right_span1_span" style="font-family:微软雅黑">已完成</span><br></div><div class="div_dd_content_span3"><button class="layui-btn">订单详情</button><br><button class="layui-btn" style="width: 92px;">已完成</button></div></div></div></li>');
+				  				
+							$("#ulAdd").append($(content));
+						}
+					  }
+				  })
+			})
+		</script>
+	</body>
+</html>

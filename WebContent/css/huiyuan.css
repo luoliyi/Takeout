@@ -1,0 +1,142 @@
+		#div_main_VIP{
+			float: left;
+			width:770px;
+			height: 600px;
+			margin:20px 0px 0px 10px;
+			position: relative;left:70px;
+		}
+		#div_left{
+			width:400px;
+			height:100px;
+			float: left;
+		}
+		#div_left1{
+			width:400px;
+			height:60px;
+		}
+		#div_left2{
+			width:400px;
+			height: 35px;
+			margin:5px 0px 0px 7px;
+		}
+		#div_right{
+			float: left;
+			margin:0px 0px 0px 5px;
+			width:360px;
+			height:100px;
+		}
+		.div_1{
+			border:1px solid lightgray;
+			width:100px;
+			height:100px;
+			float: left;
+			margin:0px 0px 0px 10px;
+		}
+		.div_1:hover{
+			cursor: pointer;
+			border: 1px solid yellow;
+		}
+		.div_2{
+			border-right:1px solid lightgray;
+			width:1px;
+			height: 90px;
+			float: left;
+			margin:5px 0px 0px 10px;
+		}
+		#div_center{
+			width:770px;
+			height: 50px;
+			float: left;
+			margin: 5px 0px 0px 0px;
+			background: #333;
+		}
+		#div_center span a{
+			display: inline-block;
+			width:100px;
+			height: 50px;
+			font-size: 20px;
+			line-height: 50px;
+			text-align: center;
+			margin-left:8px;
+		}
+		.div_center1{
+			width:238px;
+			height: 120px;
+			margin:20px 0px 0px 17px;
+			float: left;
+			background: #333;
+			
+		}
+		.div_center2{
+			width:111px;
+			height: 90px;
+			margin:20px 0px 0px 17px;
+			float: left;
+			background: #333;
+		}
+		.div_buttom{
+			width:356px;
+			height: 150px;
+			float: left;
+			margin:20px 0px 0px 17px;
+		}
+		.div_buttom:hover,.div_center2:hover,.div_center1:hover{
+			background-color: yellow;
+		}
+		.div_center2 h3,p{
+			display: inline-block;
+			margin:10px 0px 0px 10px;
+		}
+		.div_center1 h3,p{
+			display: inline-block;
+			margin:14px 0px 0px 10px;
+		}
+		.div_center2 h3,.div_center1 h3{
+			color: white;
+		}
+		.div_center2 p,.div_center1 p{
+			color: cornflowerblue;
+		}
+		.div_1 .p1{
+			color: yellow;
+		}
+		.div_1 .p2,.p3{
+			color: white;
+		}
+		#div_img{
+			width:60px;
+			height:60px;
+			float: left;
+		}
+		#div_span{
+			width:120px;
+			height: 60px;
+			float: left;
+			margin-left: 4px;
+		}
+		#div_span2{
+			width:120px;
+			height: 60px;
+			float: left;
+			margin-left: 90px;
+		}
+		#div_span span,#div_span2 span{
+			color: white;
+		}
+		#div_span,#div_span2{
+			text-align: center;
+		}
+		#div_left2_img{
+			width:17px;
+			height: 17px;
+			float: left;
+		}
+		#div_left2_img2{
+			width:17px;
+			height: 17px;
+			float: right;
+		}
+		#huiyuanmain{
+			float: left;
+			position: relative;left: 50px;
+		}

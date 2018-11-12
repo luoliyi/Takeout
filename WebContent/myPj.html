@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>我的评价</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css?v=7"/>
+	
+	<style type="text/css">
+		#PJ li{
+			color: white;
+			font-family: "微软雅黑";
+		}
+		.nocard li{
+			color: white;
+			font-family: "微软雅黑";
+		}
+	</style>
+	</head>
+	<body>
+		<div class="fl mt10 over">
+					<div class="cardmainaa relative">
+						<div class="mycomment font16">我的评价</div>
+						<div class="nocard" style="" id="PJ">
+							<div class="nocardText">您还没有评价过商品!</div>
+						</div>
+						<ul class="mycommentlist over wantCommentMain" style="display: none;">
+							
+						</ul>
+						
+					</div>
+					
+				</div>
+				<script type="text/javascript" src="js/jquery-1.11.3.js" ></script>
+				<script>
+				var list=function(){
+				$.ajax({
+					type:"get",
+					url:"newadd?list=li",
+					success:function(data){
+						if(data!=""){
+							$("#PJ").empty();
+							$.each(data,function(i, obj) {
+								var div=$("<div/>");
+								div.append($("<li/>").html("订单号："+obj.eoNumber));
+								div.append($("<li/>").html("评分："+obj.eminute));
+								div.append($("<li/>").html("评语："+obj.eremark));
+								$("#PJ").append(div);
+							});
+						}
+					}
+				});
+				};
+				list();
+				</script>
+	</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>收货地址</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	</head>
+	<style>
+		#Receiptinformation div{
+    		border-width:1px;
+    		position:relative;
+    		padding:10px;
+    		top:30px;
+		}
+		#Receiptinformation div p{
+			color:#ffff66;
+		}
+		#Receiptinformation div{
+		border: 1px solid lightgray;
+		
+	}
+	</style>
+	<body>
+		<script type="text/javascript" src="js/jquery-1.11.3.js" ></script>
+		<div class="fl mt10 over">
+					<div class="cardmainaa relative">
+						<h1 class="integralline mt10">管理地址</h1>
+						<div style="width: 1000px; height: 300px; border: 1px solid lightgray;" id="Receiptinformation">
+						</div>
+						<h1 class="integralline mt10">新增收货地址</h1>
+						<div class="addressadd">
+							<div class="addressuser"><span class="fl"><b class="red">*</b>联系人：</span><input type="text" placeholder="请输入联系人" id="username"></div>
+     							 <input name="sex" value="男" title="男" checked="checked" type="radio">男
+      							 <input name="sex" value="女" title="女" type="radio">女
+							<div class="addressuser"><span class="fl"><b class="red">*</b>手机号：</span><input type="text" placeholder="请输入您的手机号码" id="usermob"></div>
+							<div class="addressuser stycity over">
+								<input type="text" id="suggestId" placeholder="输入街道/大厦/小区名称" autocomplete="off">
+								<div id="l-map" style="display: none; overflow: hidden; position: relative; 
+									z-index: 0; background-color: rgb(5, 241, 236); 
+									color: rgb(0, 0, 0); text-align: left;">
+									<div style="overflow: visible; position: absolute; z-index: 0; left: 0px; top: 0px; 
+										cursor: url(&quot;http://api0.map.bdimg.com/images/openhand.cur&quot;) 8 8, default;">
+										<div class="BMap_mask" style="position: absolute; left: 0px; top: 0px; z-index: 9; overflow: hidden; user-select: none; width: 0px; height: 0px;">
+											
+										</div>
+										<div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 200;">
+											<div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 800;">
+												
+											</div>
+											<div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 700;"></div>
+											<div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 600;"></div>
+											<div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 500;">
+												<label class="BMapLabel" unselectable="on" 
+												style="position: absolute; cursor: inherit; 
+												background-color: rgb(190, 190, 190); 
+												border: 1px solid rgb(190, 190, 190); 
+												padding: 1px; white-space: nowrap; 
+												font: 12px arial, sans-serif; z-index: -20000;
+												 color: rgb(190, 190, 190); display: none;">shadow</label>
+											</div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 400;"></div>
+											<div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 300;"></div>
+											<div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 201;"></div>
+											<div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 200;"></div>
+										</div>
+										<div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 1;"></div>
+										<div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 2;"></div>
+										<div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 3;"></div>
+									</div>
+									<div class="pano_close" title="退出全景" style="z-index: 1201; display: none;"></div>
+									<a class="pano_pc_indoor_exit" title="退出室内景" style="z-index: 1201; display: none;">
+										<span style="float:right;margin-right:12px;">出口</span></a>
+										<div id="zoomer" style="position:absolute;z-index:0;top:0px;left:0px;overflow:hidden;visibility:hidden;cursor:url(http://api0.map.bdimg.com/images/openhand.cur) 8 8,default">
+											<div class="BMap_zoomer" style="top:0;left:0;"></div>
+											<div class="BMap_zoomer" style="top:0;right:0;"></div>
+											<div class="BMap_zoomer" style="bottom:0;left:0;"></div>
+											<div class="BMap_zoomer" style="bottom:0;right:0;"></div></div>
+											<div id="zoomer" style="position:absolute;z-index:0;top:0px;left:0px;overflow:hidden;visibility:hidden;cursor:url(http://api0.map.bdimg.com/images/openhand.cur) 8 8,default">
+												<div class="BMap_zoomer" style="top:0;left:0;"></div>
+												<div class="BMap_zoomer" style="top:0;right:0;"></div>
+												<div class="BMap_zoomer" style="bottom:0;left:0;"></div>
+												<div class="BMap_zoomer" style="bottom:0;right:0;"></div>
+											</div>
+											<div id="zoomer" style="position:absolute;z-index:0;top:0px;left:0px;overflow:hidden;visibility:hidden;cursor:url(http://api0.map.bdimg.com/images/openhand.cur) 8 8,default">
+												<div class="BMap_zoomer" style="top:0;left:0;"></div>
+												<div class="BMap_zoomer" style="top:0;right:0;"></div>
+												<div class="BMap_zoomer" style="bottom:0;left:0;"></div>
+												<div class="BMap_zoomer" style="bottom:0;right:0;"></div>
+											</div>
+											<div id="zoomer" style="position:absolute;z-index:0;top:0px;left:0px;overflow:hidden;visibility:hidden;cursor:url(http://api0.map.bdimg.com/images/openhand.cur) 8 8,default">
+												<div class="BMap_zoomer" style="top:0;left:0;"></div>
+												<div class="BMap_zoomer" style="top:0;right:0;"></div>
+												<div class="BMap_zoomer" style="bottom:0;left:0;"></div>
+												<div class="BMap_zoomer" style="bottom:0;right:0;"></div>
+											</div>
+								</div>
+								<!--<div class="citysty city">请选择省</div>
+								<div class="citysty">请选择市</div>
+								<div class="citysty">请选择区/县</div>-->
+							</div>
+							<div class="room" style="padding-top: 0;">
+								<span style="height: 35px;line-height: 35px;"><b class="red">*</b>门牌号：</span>
+								<input type="text" id="house" placeholder="请输入详细地址" style="float: initial;">
+							</div>
+							<p class="yellowadd font14">为保障餐品送达，请正确填写以上所有信息</p>
+							<div class="font16 subbtn" id="save">保存收货地址</div>
+						</div>
+						
+					</div>	
+				</div>
+				<script>
+				var list=function(){
+				$.ajax({
+					type:"get",
+					url:"newadd?list=list",
+					success:function(data){
+						$("#Receiptinformation").empty();
+						$.each(data,function(i, obj) {
+							var div=$("<div style='border:1px solid lightgray;'/>");
+							div.append($("<p/>").html("名称："+obj.lname+"&nbsp;&nbsp;&nbsp;性别："+obj.lsex+"&nbsp;&nbsp;&nbsp;电话："+obj.lphone+"&nbsp;&nbsp;&nbsp;地址："+obj.laddress));
+							$("#Receiptinformation").append(div);
+						});
+					}
+				});
+				};
+				list();
+				$("#save").click(function(){
+					//var vipnamme=
+					var name=$("#username").val();//联系人名称
+					var userm=$("#usermob").val();//手机号码
+					var suggestId=$("#suggestId").val()+$("#house").val();//收货地址
+					var sex=$('input:radio[name="sex"]:checked').val();//联系人性别
+					if(name==""||userm==""||suggestId==""||sex=="")
+					{
+						alert("请填入全部信息！");
+						return false;
+					}
+					$.ajax({
+					type:"get",
+					url:"newadd?list=LL",
+					data:{username:name,usermob:userm,house:suggestId,usersex:sex},
+					success:function(data){
+						list();
+					}
+					})
+				})
+				</script>
+	</body>
+</html>

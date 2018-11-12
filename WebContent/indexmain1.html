@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>美食汇连锁外卖</title>
+
+<!--  图标-->
+<link rel="shortcut icon" href="//www.suning.com/favicon.ico" type="image/x-icon">
+
+</head>
+<link rel="stylesheet" href="js/layui/css/layui.css" />
+<link rel="stylesheet" href="js/artDialog7/css/dialog.css">
+<style>
+	#test1{
+		margin: -29px 0px 0px 50px;
+		float: left;
+	}
+	.div-er{
+		float: left;
+		width:100px;
+		height: 100px;
+		margin: 100px 0px 0px 10px;
+		position:relative;
+		top:-100px;
+	}
+	.div-er2{
+		float: left;
+		width:100px;
+		height: 100px;
+		margin: 50px 0px 0px 10px;
+		position: relative;top: -50px;
+	}
+	.layui-breadcrumb{
+		float: left;
+		
+	}
+	.div-img{
+		width:200px;
+		height: 100px;
+		border-right-style:solid;
+		float: left;
+		margin-top: 20px;
+	}
+	.div-img img{
+		width: 140px;
+		height: 60px;
+		margin-left: 26px;
+		margin-top: 10px;
+	}
+	.div-img span{
+		margin-left: 26px;
+		font-size: 20px;
+		color:yellowgreen;
+	}
+	.span1{
+		font-size: 20px;
+		color:yellowgreen;
+		display: inline-block;
+		padding-left: 28px;
+	}
+	
+	/* 头部样式 */
+	#guide li{
+		font-size:23px;
+		color:white;
+		display:block;
+		float:left;
+		margin-right:40px;
+	}
+	#guide a{
+		color:white;
+	}
+	#guide a:hover,#guide li:hover{
+		color:#fff100;
+		cursor: pointer;
+	}
+	#position{
+		width: 50px;height: 20px;border-radius: 3px;background: #e60012;
+		position: relative;top: -20px;left: 75px;
+	}
+	#position span:hover{
+		cursor: pointer;
+		color: green;
+	}
+	#cartCount{
+		background: #e60012;
+		border-radius: 50px;width: 22px;
+		height: 22px;border: none;
+		text-align: center;
+		position: relative;top: -38px;left: 67px;
+		font-size: 17px;
+		line-height: 23px;
+		
+		/*  隐藏*/
+		display: none;
+	}
+	#guidefood li{
+		font-size: 15px;
+		font-family: 微软雅黑;
+		
+	}
+	#form1 *{
+		padding:3px 10px;
+	}
+	#loginDialog{
+	BACKGROUND-COLOR:#E6E6FA;
+	 border-radius:10px;
+	}
+	#regeistDialog{
+	BACKGROUND-COLOR:#E6E6FA;
+	 border-radius:10px;
+	
+	}
+	#getchecknum{
+		border: none;
+		font-family: "微软雅黑";
+		font-size: 17px;
+		background: orange;
+		color: white;
+		border-radius: 10px;		
+	}
+	.bdsharebuttonbox{
+		position: relative;
+		top:-100px;
+	}
+</style>
+<body background="images/body.jpg">
+	<script type="text/javascript" src="js/layui/layui.all.js" ></script>
+	<script type="text/javascript" src="js/layui/layui.js" ></script>
+	<script type="text/javascript" src="js/jquery-1.11.3.js" ></script>
+	<script type="text/javascript" src="js/artDialog7/dist/dialog.js" charset="utf-8"></script>
+	<!-- 头部 -->
+	<div style="float:left;padding-left: 30px">
+ 	<img alt="" src="images/degal.png">
+ 	<h1 style="color:white;font-size: 40px;font-style:oblique ">美食汇</h1>
+ 	<div style="position: relative;top: -30px;left: 160px;">
+ 		<i style="color:white;" class="layui-icon layui-icon-location"></i>
+ 		<span style="color: white;font-size: 15px;">珠海市</span>
+ 		<!--  更换-->
+ 		<div id="position">
+ 			<span style="color: white;padding-left: 10px;">更换</span>
+ 		</div>
+ 	</div>
+ </div>
+ <div>
+	<div id="guide" style="float:right;position: relative;top: 60px">
+		<ul>
+			<li><a href="" id="indexmain" style="color:#fff100;">首页</a></li>
+			<li><a href="index.html" id="deliciousfood">美味菜单</a></li>
+			<li><a href="index.html">热销促销</a></li>
+			<li id="vipcenter">会员中心</li>
+			<li><a href="">购物车</a><i class="layui-icon layui-icon-cart"></i>
+				<!-- 购物车数量 -->
+				<div id="cartCount">0</div>
+			</li>
+			<li id="login">登录</li>
+			<li id="regsist">注册</li>
+			<li id="exit">退出</li>
+		</ul>
+	</div>
+	
+	<!-- 黄线 -->
+ <div id="yellowline">
+	<hr  style="height:5px;background:transparent;"/>
+</div> 
+</div>
+
+
+<!-- 隐藏的登录框 -->
+
+<fieldset id="loginDialog" style="display:none;border: none ;">
+	<div><img alt="" src="images/degal.png" style="margin-left:90px;">
+	<b style="font-size:35px; color:#DC143C ;position: relative;top: 13px;left: 15px;">美食汇</b></div><br/>
+	<form id="form1"  action="" method="post">
+		<div style="margin-left:60px; "><label for="phone">
+		<i class="layui-icon layui-icon-cellphone" style="font-size: 30px; color: #33cc33;"></i> 
+		</label>
+		<input id="phone" style=" border-radius:5px;
+		 BACKGROUND-COLOR: transparent;" type="text" placeholder="请输入您的手机号码">
+		</div><br/>
+		<div style="margin-left:70px; "><i class="layui-icon layui-icon-password" style="font-size: 30px; color: #33cc33;"></i><input id="password" style=" border-radius:5px; BACKGROUND-COLOR: transparent;" name="password" type="password" placeholder="请输入您的密码" ></div><br/>
+		<div style="margin-left:60px; "><i class="layui-icon layui-icon-vercode" style="font-size: 30px; color: #33cc33;"></i><input id="checknum"style=" border-radius:5px; BACKGROUND-COLOR: transparent;"  name="checknum" type="text" placeholder="请输入您的验证码" >
+		
+		<button id="getchecknum" style="position: relative;left: 5px; border-radius:10px;" >获取验证码</button></div>
+		<div style="margin-left:60px; "><a href="" style="font-size: 13px;text-decoration: underline;">手机号码不可用>></a></div>
+		<div style="margin-left:150px; "><input id="btnsubmit" type="submit" style="border-radius:10px; background:#FA8072; color:#fff;"  value="确定">
+		 <input style="background:#FA8072; border-radius:10px; margin-left:13px; color:#fff;" type="reset" value="重置"></div>
+		
+		</form>
+</fieldset>
+
+
+<!-- 隐藏的注册框 -->
+<fieldset id="regeistDialog" style="display:none;border: none">
+	<div><img alt=""style="margin-left:90px;" src="images/degal.png">
+	<b style="font-size:35px; color:#DC143C ;position: relative;top: 13px;left: 15px">美食汇</b></div><br/>
+	<form id="form1"  action="" method="post">
+		<div style="margin-left:60px; "><label for="rphone">
+		<i class="layui-icon layui-icon-cellphone" style="font-size: 30px; color: #33cc33;"></i> 
+		</label><input id="rphone"style=" border-radius:5px;
+		 BACKGROUND-COLOR: transparent;" type="text" placeholder="请输入您的手机号码"></div><br/>
+		<div style="margin-left:70px; "><i class="layui-icon layui-icon-password" style="font-size: 30px; color: #33cc33;"></i> <input id="rpassword"style=" border-radius:5px; BACKGROUND-COLOR: transparent;" name="password" type="password" placeholder="请输入您的密码" ></div><br/>
+		<div style="margin-left:60px; "><i class="layui-icon layui-icon-vercode" style="font-size: 30px; color: #33cc33;"></i><input id="rchecknum"style=" border-radius:5px; BACKGROUND-COLOR: transparent;" name="rchecknum" type="text" placeholder="请输入您的验证码" ><button id="getchecknum2"style=" position: relative;left: 5px; border-radius:10px;">获取验证码</button></div>
+		<div style="margin-left:60px; "><a href="" style="font-size: 13px;text-decoration: underline;">手机号码不可用>></a></div>
+		<div style="margin-left:150px; "><input id="btnregeist" type="submit"style=" border-radius:10px; background:#FA8072; color:#fff;"  value="确定">
+		<input type="reset"style="background:#FA8072; border-radius:10px; margin-left:13px; color:#fff;" value="重置"></div>
+	</form>
+</fieldset>
+	
+	
+	<div id="guidefood" style="position: relative;top: -30px;" class="layui-tab layui-tab-brief">
+	  <ul class="layui-tab-title"  style="background:#fff100;">
+	    <li class="layui-this" style="color: #232323;">新品</li>
+	    <li style="color: #232323;">营养早餐</li>
+	    <li style="color: #232323;">丰富主食</li>
+	    <li style="color: #232323;">轻松下午茶</li>
+	  </ul>
+	  <div class="layui-tab-content"></div>
+	</div>
+	<div class="layui-carousel" id="test1">
+	  <div carousel-item>
+	    <div><img src="images/11.jpg" width="100%" height="100%"></div>
+	    <div><img src="images/timg5.jpg" width="100%" height="100%"></div>
+	    <div><img src="images/timg6.jpg" width="100%" height="100%"></div>
+	    <div><img src="images/timg7.jpg" width="100%" height="100%"></div>
+	    <div><img src="images/diaocha.jpg" width="100%" height="100%"></div>
+	  </div>
+	</div>
+	<div class="div-er"><img src="images/erweima.jpg" width="100%" height="100%"></div>
+	<div class="div-er"><span style="display: inline-block;font-size: 17px;color: yellowgreen;">用手机淘宝/天猫APP扫码进入美食汇天猫店</span></div>
+	<div class="div-er2"><img src="images/erweima.jpg" width="100%" height="100%" style="position: relative;top: -35px"></div>
+	<div class="div-er2"><span style="display: inline-block;font-size: 17px;color: yellowgreen;position: relative;top: -40px;">扫描进入微信订餐</span></div>
+	  <a href=""><div class="div-img" style="margin-left: 200px;"><img src="images/6.png"><br/><span>兑换天猫电子劵</span></div></a>
+	  <a href=""><div class="div-img"><img src="images/7.png"><br/><span class="span1">注册送好礼</span></div></a>
+	  <a href=""><div class="div-img"><img src="images/8.png"><br/><span class="span1">新品特惠</span></div></a>
+	  <a href=""><div class="div-img"><img src="images/9.png"><br/><span class="span1">今日特价</span></div></a>
+	  
+	  <a href='sms:13926901506'>短信</a>
+        <br />
+        <a href="tel:13926901506">电话</a>
+        <br />
+        <a href="mailto:mopln510@qq.com">邮件</a>
+        <br/>
+        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=958388381&site=qq&menu=yes" alt="点击这里给我发消息" title="点击这里给我发消息">QQ客服</a>
+        <br />
+        <a href="http://map.baidu.com/mobile/webapp/search/search/qt=s&wd=%E7%8F%A0%E6%B5%B7%E6%B8%AF&c=348&searchFlag=bigBox&version=5&exptype=dep/vt=map/?fromhash=1">地图</a>
+        <br />
+        <a href="http://map.baidu.com/mobile/webapp/index/index#place/detail/qt=ninf&wd=%E5%8D%97%E6%96%B9IT%E5%AD%A6%E9%99%A2&c=140&searchFlag=bigBox&version=5&exptype=dep&src_from=webapp_all_bigbox&sug_forward=&src=0&uid=717b5c621070ee955d0d0270&industry=education&qid=3767972802907606580/showall=1&pos=0&da_ref=listclk&da_qrtp=11&da_adtp=&da_log=sampid%3A3_eno%3A206_adnum%3A0_sid%3A9712246999610050_from%3Awebappmap_exptype%3Aurl_query%3A%E5%8D%97%E6%96%B9IT%E5%AD%A6%E9%99%A2_adids%3A_killnum%3A0_userids%3A&da_adquery=%E5%8D%97%E6%96%B9it%E5%AD%A6%E9%99%A2&da_adtitle=%E5%8D%97%E6%96%B9IT%E5%AD%A6%E9%99%A2&da_adindus=%E6%95%99%E8%82%B2%E5%9F%B9%E8%AE%AD%3B%E9%AB%98%E7%AD%89%E9%99%A2%E6%A0%A1&detail_from=list%26pos%3D0%26ad_page_logs%3D%26semStatType%3Dlist&vt=map">IT学院</a>
+        <br />
+        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"32"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+		  
+	  
+	  <br/>
+	  
+	  <iframe src="end.html" style="float: left;height: 300px;border: none;" width="100%"></iframe>
+	<script>
+		layui.use('carousel', function(){
+		  var carousel = layui.carousel;
+		  //建造实例
+		  carousel.render({
+		    elem: '#test1'
+		    ,width: '950px' //设置容器宽度
+		    ,height:'500px'
+		    ,arrow: 'always' //始终显示箭头
+		    //,anim: 'updown' //切换动画方式
+		  });
+		});
+		layui.use('element', function(){
+		  var element = layui.element;
+		});
+		$("#vipcenter").click(function(){
+			//跳转
+			window.location.href="huiyuanmain.html";
+		})
+		$("#indexmain").click(function(){
+			//父窗体跳转
+			top.location.href="indexmain.html";
+		})
+		
+		var dia=null;
+		$("#login").click(function(){
+			dia=dialog({
+				title:"请输入登录信息",
+				modal:true,
+				backdropOpacity:0.5,
+				width:'500px',
+				height:'350px',
+				zIndex: 1987,
+				content:$("#loginDialog")
+			});
+			dia.show();
+		})
+		$("#regsist").click(function(){
+			dia=dialog({
+				title:"请输入注册信息",
+				modal:true,
+				backdropOpacity:0.5,
+				width:'500px',
+				height:'350px',
+				zIndex: 1987,
+				content:$("#regeistDialog")
+			});
+			dia.show();
+		})
+		
+		$("#deliciousfood").click(function(){
+			$(this).css("color","#fff100");
+			$("#indexmain").css("color","transparent");
+		})
+
+		var code=null;
+		//确定
+		$("#btnsubmit").click(function(){
+			$.ajax({
+				url:"Login.do?action=log_in",
+				data:{user:$("#phone").val(),password:$("#password").val()},
+				beforeSend:function(){
+					//判断验证码是否正确
+					if(!$("#checknum").val()==code){
+						alert("验证码不正确!");
+						return false;
+					}
+				},
+				success:function(data){		
+					var Jsondata=JSON.parse(data);
+					if((Jsondata.code==0)&&($("#phone").val()!="123456789")){
+						$("#login").html($("#phone").val()+"欢迎您");
+						dia.close().remove();
+						window.location.href="index.html?name="+$("#phone").val();
+					}else if($("#phone").val()=="123456789"){
+						window.location.href="resturantindex.html";
+					}
+					else{
+						alert("账号密码错误,请检查!");
+						return false;
+					}
+
+				}
+			})
+			return false;
+		})
+		
+		//注册
+		$("#btnregeist").click(function(){
+			$.ajax({
+				url:"Login.do?action=login",
+				data:{user:$("#rphone").val(),password:$("#rpassword").val()},
+				beforeSend:function(){
+					
+				},
+				success:function(data){
+					//window.location.href="index.html";
+					var jsondata=JSON.parse(data);
+					if(jsondata.code==0){
+						console.log(jsondata.data.vaccountNumber);
+						$("#login").html($("#rphone").val()+",欢迎您");
+						window.location.href="index.html?name="+$("#rphone").val();
+						dia.close().remove();
+					}						
+				}
+			})
+			return false;
+		})
+		//获取验证码
+		$("#getchecknum").click(function(){
+			$("#getchecknum").html("验证码已发送.");
+			
+			/*  $.ajax({
+				url:"ShortMessage",
+				type:"get",
+				success:function(data){
+					alert("验证码已发送,请注意接收");
+					console.log("返回的码值："+data);
+					var jsdata=JSON.parse(data);
+					//判断验证码是否正确
+					code=jsdata.code;
+				}
+			}) */
+			
+			return false;
+		})
+		
+		$("#getchecknum2").click(function(){
+			
+			$("#getchecknum2").html("验证码已发送.");
+			
+			return false;
+		})
+</script>
+</body>
+</html>

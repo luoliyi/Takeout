@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>订单内容</title>
+<!--  图标-->
+<link rel="shortcut icon" href="//www.suning.com/favicon.ico" type="image/x-icon">
+<!-- 改成你本地的layui.css地址 -->
+<link href="js\layui\css\layui.css"  media="all" rel="stylesheet">
+<style>
+
+	div{
+		margin-top:20px;
+	}
+	#maxbox{
+		width: 1134px;height: 1477px;
+		background: white;
+		margin: auto;
+		position: relative;
+		top:40px;
+	}
+	#orderinfo{
+		width: 100%;height: 45px;background: #e4e4e4;
+		color: #1e1e1e;line-height: 45px;
+	}
+	*{
+		 text-indent:20px;
+	}
+	#foodtime p{
+		color:#855f3d;font-size: 18px;
+	}
+	#foodtime #changetime{
+		color: #d01b1e;
+		cursor: pointer;
+	}
+	.getgood{
+		width: 99%; height: 100px;
+		line-height: 10px;position: relative;
+		border: 1px solid lightgray;
+	}
+	.getgood *{
+	 	padding-top: 10px;
+	}
+	.edit2{
+		border:1px solid lightgray;
+		padding:10px 20px;
+		border-radius: 5px;
+	}
+	.edit{
+		text-align: center;
+	}
+	#addnewplace{
+		position:relative;
+		height: 30px;
+		float: right;
+		top: -45px; right: 35px;
+		line-height: 30px;
+	}
+	#addnewplace2,#nowactive{
+		padding:10px 20px;
+		background: #d01b1e;
+		border-radius: 15px;
+		color: white;
+	}
+	#guide {
+		/*background: #e4e4e4;*/
+		height: 50px;
+		line-height: 50px;
+		position: relative;
+		left:0px;
+		top:-100px;
+		z-index: 999999px;
+		
+	}
+	#guide li{
+		font-size:20px;
+		color:white;
+		display:block;
+		float:left;
+		margin-right:40px;
+		text-align: center;
+		position: relative;
+		top: -15px;
+	}
+	#guide a{
+	color: white;}
+	#otdertamll{
+		width: 100%;height: 100px;
+		position: relative;top: 70px;
+		border-top:1px solid gray; 
+	}
+	#otdertamll #ticket{
+		color: #e4393c;
+		font-size: 28px;
+		padding:20px 5px;
+	}
+	 #tianmaocode{
+		padding: 5px 0px;width: 345px;height: 30px;text-indent: 1em;
+	}
+	#ticketche{
+		line-height: 40px;
+		background: #d01b1e;
+		color: #fff;
+		padding: 13px 22px;
+	}
+	#myticket{
+		line-height: 40px;
+		background: #d01b1e;
+		color: #fff;
+		padding: 13px 22px;
+	}
+	#foodcontent{
+		width: 100%;
+		
+	}
+	#otherdetails{
+		width:100%;
+		height:300px;
+		float: left;
+		position: relative;
+		top: 50px;
+	}
+	#otherdetails *{
+		font-size: 18px;
+	}
+	#otherdetails input[type='radio']{
+		
+	}
+	#memotxt{
+		width: 530px;
+		height: 80px;
+		margin: 5px 0 30px 0;
+	
+	}
+	#moneyanorder{
+		position:relative;
+		width: 100%;background: #fefdee;
+		border: none;
+	}
+	#moneyanorder span{
+		font-size: 22px;
+		color: #d01b1e;
+		position: relative;left: 800px;
+	}
+	#submitbutton{
+		position: relative;left: 800px;
+	}
+	#submitbutton #returnmenu{
+		color: #fff;
+		border: 1px solid rgba(6,0,1,.27);
+		width: 145px;height: 40px;line-height: 40px;
+		text-align: center;
+		font-size: 18px;
+		border-radius: 30px;
+		margin: 20px 20px 20px 0;
+		padding: 10px 20px;
+		background: #d01b1e;
+	}
+	#submitbutton #submitmenu{
+		color: #fff;background:#d01b1e;
+		width: 145px;height: 40px;line-height: 40px;
+		text-align: center;
+		font-size: 18px;
+		border-radius: 30px;
+		margin: 20px 20px 20px 0;
+		padding: 10px 20px;
+	}
+	#tips p{
+		float:right;
+		font-size: 13px;
+	}
+	#showMorePlace:hover{
+		cursor: pointer;
+		color: #d01b1e;
+	}
+	#moreplace{
+		display: none;
+	}
+	#remark .select,#otherdetails input[name='che']{
+		border: none;
+		width:18px;height: 18px;
+		background: transparent;
+	}
+	
+	/* 头部 */
+	#guides li{
+		font-size:23px;
+		color:#333;
+		display:block;
+		float:left;
+		margin-right:40px;
+	}
+	#guides a{
+		color:white;
+	}
+	#guide a:hover,#guide li:hover{
+		color:#fff100;
+		cursor: pointer;
+	}
+	#position{
+		width: 70px;height: 20px;border-radius: 3px;background: #e60012;
+		position: relative;top:-70px;left:70px;
+	}
+	#position span:hover{
+		cursor: pointer;
+		color: green;
+	}
+	#cartCount{
+		background: #e60012;
+		border-radius: 50px;width: 22px;
+		height: 22px;border: none;
+		text-align: center;
+		position: relative;top: -38px;left: 67px;
+		font-size: 17px;
+		line-height: 23px;
+		
+		/*  隐藏*/
+		display: none;
+	}
+	#guidefood li{
+		font-size: 15px;
+		font-family: 微软雅黑;
+		
+	}
+	#form1 *{
+		padding:5px 10px;
+	}
+	#checkorder:hover{
+		font-size: 130%;
+		cursor: pointer;
+	}
+	#submitmenu:hover{
+		cursor: pointer;
+	}
+	
+	/* 购物车 */
+	.maxbox{
+		width: 100%;height: 70px;
+		float: left;
+	}
+	.width1{
+		position:relative; text-align:left; left:70px; top:-30px; float: left;width: 270px;
+		font-size: 16px;
+	}
+	.width1 img{
+		width: 70px;height: 70px;
+	}
+	.width2{
+		float: left;position:relative;left:180px;text-align:center;;font-size: 18px;
+		color:#d01b1e;
+	}
+	.width3{
+		float: left;position:relative;left:350px; text-align:center;font-size: 18px;
+	}
+	.width4{
+		float: left;position:relative;left:415px; text-align:center;font-size: 18px;
+	}
+	.width5{
+		float: left;position:relative;left:520px;text-align:center;font-size: 18px;
+	}
+</style>
+</head>
+<body style="background:url('images/kfbg.jpg') ">
+
+ <div style="float:left;padding-left: 30px">
+ 	<img alt="" src="images/degal.png">
+ 	<h1 style="color:white;font-size: 40px;font-style:oblique ">美食汇</h1>
+ 	<div style="position: relative;top: -30px;left: 160px;">
+ 		<i style="color:white;" class="layui-icon layui-icon-location"></i>
+ 		<span style="color: white;font-size: 15px;">珠海市</span>
+ 		<!--  更换-->
+ 		<div id="position">
+ 			<span style="color: white;padding-left: 10px;">更换</span>
+ 		</div>
+ 	</div>
+ </div>
+ <div>
+	<div id="guide" style="float:right;position: relative;top: 60px">
+		<ul>
+			<li><a href="indexmain1.html" id="indexmain">首页</a></li>
+			<li><a href="" id="deliciousfood">美味菜单</a></li>
+			<li><a href="">热销促销</a></li>
+			<li><a href="" id="vipcenter">会员中心</a></li>
+			<li><a href="">购物车</a><i class="layui-icon layui-icon-cart"></i>
+				<!-- 购物车数量 -->
+				<div id="cartCount">0</div>
+			</li>
+			<li id="login">15070237082,欢迎您</li>
+			<li id="exit">退出</li>
+		</ul>
+	</div>
+	
+	<!-- 黄线 -->
+ <div id="yellowline">
+	<hr  style="height:5px;background:#fff100"/>
+</div> 
+</div>
+ 
+	<div id="maxbox">
+		<div id="orderinfo">
+			<h3>订单信息</h3>
+		</div>
+		<!-- 送餐时间 -->
+		<div id="foodtime">
+			<p>送餐时间：成功提交订单后，预计<b id="foodtime" style="color: #d01b1e">0:30</b>左右送达<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<a id="changetime" href="">修改时间   ></a></p>
+		</div>
+		<!-- 收货地址 -->
+		<div>
+			<p style="font-size:20px;font-family: 微软雅黑">收货地址</p>
+		</div>
+		<!-- 地址 -->
+		<div id="getgood">
+			<p><input type="radio" name="selectAddress" id="selectAddress" value="" checked="checked"><span id="lname"></span>  <span id="lphone"></span></p>
+			<p><span id="yourplace"></span></p>
+			<div class="edit" style="position: absolute;top: 10px; right: 35px;"><span class="edit2" style="position: relative; top:130px; left: -35px;">编辑</span></div>
+		</div>
+		<!-- 地区的隐藏框 -->
+		<div id="moreplace">
+		
+		</div>
+		<!-- 显示更多地址 -->
+		<div id="showmoreplace">
+			<p id="showMorePlace">显示更多地址<i class="layui-icon layui-icon-right"></i>
+				<div id="addnewplace"><span id="addnewplace2" style="position: relative;left: -25px;">新增地址</span></div>
+			</p>
+		</div>
+		<!-- 收货地址 -->
+		<div id="listanorder">
+			<br/>
+				<p><span>收货地址</span><div id="addnewplace">
+				<span id="nowactive" style="position: relative;left: -25px;">当前活动：无可用优惠活动</span></div></p>
+			<br/>
+			<!-- 导航栏 -->
+			<div id="guides" style="float:right;position: relative;top: -30px;">
+				<ul>
+					<li style="width: 280px; ">餐品</li>
+					<li style="width: 200px;">单价（元）</li>
+					<li>数量</li>
+					<li style="width: 230px">优惠方式</li>
+					<li style="border-right:none ">小计</li>
+				</ul>
+			</div>
+			<!-- 内容 -->
+			<div id="foodcontent">
+
+				<!--  <div class="maxbox">
+					第一个
+					 <div class="width1">
+						<img alt="" src="images/菜式/百事可乐.jpg" width="70px" height="70px">
+						<span>百事可乐</span>
+					</div>
+					第二个
+					<div class="width2" ><span>￥</span><span>22.0</span></div>
+					第三个
+					<div class="width3"><span>2</span></div>
+					第四个
+					<div class="width4">无可用优惠活动</div>
+					第五个 
+					<div class="width5">43</div>
+				</div> -->
+			
+			</div>
+			<!-- 兑换卷 -->
+			<div id="otdertamll" style="float: left;">
+				<div><span id="ticket">美食汇兑换卷</span><input type="text" placeholder="请输入兑换码" id="tianmaocode">
+					<span id="ticketche">兑换</span>&nbsp;&nbsp;<span id="myticket">我的优惠券<i class="layui-icon layui-icon-down"></i></span>
+				</div>
+			</div>
+		</div>
+		<!-- 其他信息 -->
+		<div id="otherdetails">
+			<div><span>其他信息</span></div>
+			<div>是否索要发票：<input type="radio" name="che" value="true" checked="checked">是
+			<input type="radio"  name="che" value="false">否</div>
+			<div style="color: #389724"><i class="layui-icon layui-icon-flag" style="font-size: 30px;">
+			</i>  积极参与绿色环保，创建绿色家园！</div>
+			<div>订单备注：</div>
+			<div id="remark">
+				<input type="checkbox" value="不要辣" class="select" name="selectType">不要辣
+				<input type="checkbox" class="select" value="多双筷子" name="selectType">多双筷子
+				<input type="checkbox" value="不要葱" class="select" name="selectType">不要葱
+				<input type="checkbox" class="select" value="不要香菜" name="selectType">不要香菜
+				<input type="checkbox" class="select" value="去冰" name="selectType">去冰
+				<div>
+					<textarea id="memotxt" placeholder="请输入其他需求"></textarea>
+				</div>
+			</div>
+			<br/><br/>
+			<!-- 结账块 -->
+			<div id="moneyanorder">
+				<p><span>实付总额：</span><span id="needpay">35.70</span><span>元</span></p>
+				<p><span>含配送费：</span><span id="routerfee">6</span><span>元</span></p>
+				<p><span>优惠金额：</span><span id="orderprommoney">3</span><span>元</span></p>
+			</div>
+			<!-- 结账 -->
+			<div id="submitbutton">
+				<span id="returnmenu" style="background: gray;">返回菜单</span>
+				<span id="submitmenu" style="background: gray;">提交订单</span>
+			</div>
+			<div id="tips">
+				<p style="color:#999">点击"提交订单"后，您的订单会立即下到我们的餐厅开始制作食品，因此我们将无法接受修改或取消订单 ，请提交前仔细核对订单内容。</p>
+				<p><i class="layui-icon layui-icon-radio" style="color: gray" id="checkorder"></i> 我已阅读并接受<a href="" style="color: red;font-size: 15px">《美食汇会员协议》</a></p>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 隐藏的添加地址框 -->
+<fieldset id="addressDialog" style="display:none;border: none">
+	<div><img alt="" src="images/degal.png"></div><br/>
+	<form id="form1"  action="" method="post">
+		<label for="uuser">用户名：</label><input id="uuser" type="text" placeholder="请输入新增的用户名"><br/> <br/>
+		<label for="usex">性别：</label><select id="usex"><option value="男" selected="selected">男</option><option value="女">女</option></select><br/><br/>
+		<label for="uphone">电话号码：</label><input id="uphone" name="uphone" type="text" placeholder="请输入新增用户的手机号码" ><br/><br/>
+		<label for="uaddress">请输入新增地址：</label><input id="uaddress" type="text"><br/><br/>
+		<input type="button" id="addsub" value="提交"><input type="reset" value="重置"><br/><br/>
+	</form>
+</fieldset>
+</body>
+<!-- 改成你本地的layui地址 -->
+<script type="text/javascript" src="js/layui/layui.js"></script>
+<!-- 改成你本地的jquery地址 -->
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="js/artDialog7/dist/dialog.js" charset="utf-8"></script>
+<script type="text/javascript">
+	$("#showMorePlace").click(function(){
+		$("#moreplace").toggle();
+	})
+	
+	$(function(){
+		//展示购物车
+		$.ajax({
+			url:"Takeawaycontrol.do?action=showCart",
+			success:function(data){
+				var jsondata=JSON.parse(data);
+				console.log("下面是菜：")
+				console.log(jsondata.data);				
+				
+				/*
+					<div class="maxbox">
+					<!-- 第一个 -->
+					<div class="width1">
+						<img src="images/菜式/百事可乐.jpg">
+						<span>百事可乐</span>
+					</div>
+					<!-- 第二个 -->
+					<div class="width2" ><span>￥</span><span>22.0</span></div>
+					<!-- 第三个 -->
+					<div class="width3"><span>2</span></div>
+					<!-- 第四个 -->
+					<div class="width4">无可用优惠活动</div>
+					<!--第五个  -->
+					<div class="width5">43</div>
+				</div>
+					
+				*/
+				var sumprice=0;
+				/* foodcontent */
+				for (var i = 0; i < jsondata.data.length; i++) {
+					var price=jsondata.data[i].scquantity*jsondata.data[i].mprice;
+					sumprice +=price;
+					var maxbox=$("<div class='maxbox'></div>");
+					var div1=$("<div class='width1'><img src='images/菜式/"+jsondata.data[i].mname+".jpg'><span>"+jsondata.data[i].mname+"</span></div>");
+					var div2=$("<div class='width2'><span>￥</span><span>"+jsondata.data[i].mprice+"</span></div>");	
+					var div3=$("<div class='width3'><span>"+jsondata.data[i].scquantity+"</span>");
+					var div4=$("<div class='width4'>无可用优惠活动</div>");
+					var div5=$("<div class='width5'>"+price+"</div>");
+					
+					var countbox=$(maxbox).append($(div1)).append($(div2)).append($(div3)).append($(div4)).append($(div5));
+					$("#foodcontent").append($(countbox));
+				} 
+				
+				//总额
+				$("#needpay").html(sumprice+parseInt($("#routerfee").html()));
+			}	
+		})
+		
+		//展示默认地址
+		$.ajax({
+			url:"Takeawaycontrol.do?action=defaultLocations",
+			success:function(data){
+				console.log(data)
+				var jsondata=JSON.parse(data);
+				console.log("默认地址:")
+				console.log(jsondata);
+				
+				//lname
+				$("#lname").html(jsondata.data.lname);
+				$("#lphone").html(jsondata.data.lphone);
+				//默认地址赋值
+				$("#yourplace").html(jsondata.data.laddress);
+				//改变values
+				$("#selectAddress").val(jsondata.data.lid);
+			}
+		})
+		//展示更多地址
+		$.ajax({
+			url:"Takeawaycontrol.do?action=vipAddress",
+			success:function(data){
+				var jsdata=JSON.parse(data);
+				console.log(jsdata.data);
+				//更多地址
+				var maxdiv=$("#moreplace");
+				for (var i = 0; i < jsdata.data.length; i++) {
+					if(jsdata.data[i].lstatus==false){
+						/*
+					<div class="getgood">
+						<p><input type="radio" name="selectAddress" id="" value="+jsdata.data[i].lid+"><span></span><span></span></p>
+						<p><span>上海市闵行区万源路-道路 23</span></p>
+						<div style="position: absolute;top: 10px; right: 35px;"><span style="position: relative;left: -25px;">编辑</span></div>
+					</div>
+						*/
+						var div1=$("<div class='getgood' style='margin-top:-1px'></div>");
+						var one=$("<p><input type='radio' name='selectAddress' value='"+jsdata.data[i].lid+"'<span>"+jsdata.data[i].lname+"</span><span>"+jsdata.data[i].lphone+"</span>");
+						var two=$("<p><span>"+jsdata.data[i].laddress+"</span></p>");
+						var three=$('<div style="position: absolute;top: 10px; right: 35px;"></div>');
+						var edit=$('<span class="edit2" style="position: relative;left: -25px;">编辑</span>').data("location",jsdata.data[i]).appendTo($(three));
+						$(maxdiv).append($(div1).append(one).append(two).append(three));						
+					}
+				}
+			}
+		})		
+	})
+	var dia=null;
+	$("#addnewplace2").click(function(){
+		dia=dialog({
+			title:"请输入添加地址信息",
+			modal:true,
+			backdropOpacity:0.5,
+			width:'500px',
+			height:'350px',
+			zIndex: 1987,
+			content:$("#addressDialog")
+		});
+		dia.show();
+	})
+	
+	$("#addsub").click(function(){
+		$.ajax({
+			url:"Takeawaycontrol.do?action=addLocations",
+			data:{name:$("#uuser").val(),sex:$("#usex").val(),phone:$("#uphone").val(),saddress:$("#uaddress").val()},
+			success:function(data){
+				var jsdata=JSON.parse(data);
+				if(jsdata.code==0){
+					alert("添加成功");
+				}
+			}	
+		})
+	})
+	
+	$("#checkorder").click(function(){
+		$(this).css("color","#d01b1e");
+		$("#returnmenu").css("background","#d01b1e");
+		$("#submitmenu").css("background","#d01b1e");
+	})
+	
+	/* 提交订单 */
+	$("#submitmenu").click(function(){
+		var bo=$("input[name='che']:checked").val();
+		var arr = new Array();
+		$("input[name='selectType']:checked").each(function(i){
+            arr[i] = $(this).val();
+        });
+		var vals = arr.join(",");
+		var content=$("#memotxt").val();
+		//备注
+		var remark=vals+","+content;
+		var addressid=$("input[name='selectAddress']:checked").val();
+		
+		$.ajax({
+			url:"Takeawaycontrol.do?action=confirmOrder",
+			data:{oinvoice:bo,address:addressid,oremark:remark},
+			success:function(data){
+				var jsdata=JSON.parse(data);
+				console.log("数据：");
+				console.log(jsdata.data);
+				//跳转
+				window.location.href="successOrder.html?user=15070237082?jsdata="+jsdata.data.oNumber;  //oNumber大写
+			}
+		})
+	})
+	
+</script>
+</html>

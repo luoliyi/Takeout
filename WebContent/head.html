@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>头部</title>
+<link rel="stylesheet" href="js/layui/css/layui.css"  media="all"/>
+<link rel="stylesheet" href="js/artDialog7/css/dialog.css">
+<style type="text/css">
+	#guide li{
+		font-size:23px;
+		color:white;
+		display:block;
+		float:left;
+		margin-right:40px;
+	}
+	#guide a{
+		color:white;
+	}
+	#guide a:hover,#guide li:hover{
+		color:#fff100;
+		cursor: pointer;
+	}
+	#position{
+		width: 50px;height: 20px;border-radius: 3px;background: #e60012;
+		position: relative;top: -20px;left: 75px;
+	}
+	#position span:hover{
+		cursor: pointer;
+		color: green;
+	}
+	#cartCount{
+		background: #e60012;
+		border-radius: 50px;width: 22px;
+		height: 22px;border: none;
+		text-align: center;
+		position: relative;top: -38px;left: 67px;
+		font-size: 17px;
+		line-height: 23px;
+	}
+
+</style>
+</head>
+<body background="images/body.jpg" > 
+ <div style="float:left;padding-left: 30px">
+ 	<img alt="" src="images/degal.png">
+ 	<h1 style="color:white;font-size: 40px;font-style:oblique ">美食汇</h1>
+ 	<div style="position: relative;top: -30px;left: 160px;">
+ 		<i style="color:white;" class="layui-icon layui-icon-location"></i>
+ 		<span style="color: white;font-size: 15px;">珠海市</span>
+ 		<!--  更换-->
+ 		<div id="position">
+ 			<span style="color: white;padding-left: 10px;">更换</span>
+ 		</div>
+ 	</div>
+ </div>
+ <div>
+	<div id="guide" style="float:right;position: relative;top: 60px">
+		<ul>
+			<li><a href="" id="indexmain" style="color:#fff100;">首页</a></li>
+			<li><a href="" id="deliciousfood">美味菜单</a></li>
+			<li><a href="">热销促销</a></li>
+			<li><a href="" id="vipcenter">会员中心</a></li>
+			<li><a href="">购物车</a><i class="layui-icon layui-icon-cart"></i>
+				<!-- 购物车数量 -->
+				<div id="cartCount">0</div>
+			</li>
+			<li id="login">登录</li>
+			<li id="regsist">注册</li>
+			<li id="exit">退出</li>
+		</ul>
+	</div>
+	
+	<!-- 黄线 -->
+ <div id="yellowline">
+	<hr  style="height:5px;background:#fff100"/>
+</div> 
+</div>
+
+<!-- 隐藏的登录框 -->
+<fieldset id="loginDialog" style="display:none;border: none"><legend>登录</legend>
+	<form id="form1">
+		<label for="phone">手机：</label><label for="phone">手机：</label><br/> 
+		<label for="phone">手机：</label><input id="phone" name="phone" type="password" placeholder="请输入您的密码" ><br/>
+		<input type="submit" value="提交"><input type="reset" value="重置"><br/>
+	</form>
+</fieldset>
+
+
+</body>	
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="js/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/artDialog7/dist/dialog.js" charset="utf-8"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$("#vipcenter").click(function(){
+		//父窗体跳转
+		top.location.href="huiyuanmain.html";
+	})
+	$("#deliciousfood").click(function(){
+		//父窗体跳转
+		top.location.href="index.html";
+	})
+	$("#indexmain").click(function(){
+		//父窗体跳转
+		top.location.href="indexmain1.html";
+	})
+})
+	
+</script>
+</html>

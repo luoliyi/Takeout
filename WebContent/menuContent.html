@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="css/style.css">
+	</head>
+	<style>
+		#div_MCmain{
+			border:1px solid red;
+			width:700px;
+			height: 800px;
+		}
+		#div_MC1{
+			width:600px;
+			height: 150px;
+			float: left;
+		}
+		#div_MC2{
+			width:600px;
+			height: 50px;
+			float: left;
+		}
+		#div_MC3{
+			width:600px;
+			height: 100px;
+			margin-top: 3px;
+			float: left;
+		}
+		#div_MC4{
+			width:600px;
+			height: 60px;
+			margin-top: 3px;
+			float: left;
+		}
+		#div_MC5{
+			width:600px;
+			height: 60px;
+			margin-top: 3px;
+			float: left;
+		}
+		#div_MC6{
+			border:1px solid red;
+			width:600px;
+			height: 330px;
+			margin-top: 3px;
+			overflow: auto;
+		}
+		#div_MC1_picture{
+			border:1px solid red;
+			width:150px;
+			height: 150px;
+			float: left;
+		}
+		#div_MC1_span{
+			width:400px;
+			height: 140px;
+			float: left;
+			margin-left: 20px;
+		}
+		.span_MC1{
+			display: inline-block;
+			color:greenyellow;
+			font-size: 20px;
+		}
+		#div_MC2 p{
+			display: inline-block;
+			margin-left: 4px;
+		}
+		.div_MC3_div{
+			border:1px solid red;
+			width:140px;
+			height: 35px;
+			margin: 3px 0px 0px 5px;
+			border-radius: 5px;
+			float: left;
+		}
+		#div_MC3 span{
+			display: inline-block;
+			line-height: 35px;
+			margin-left: 3px;
+		}
+		.div_MC3_div:hover{
+			background: yellowgreen;
+			cursor: pointer;
+		}
+		#div_MC4_input{
+			width:240px;
+			height: 50px;
+			margin:5px 0px 0px 360px;
+		}
+		#div_MC5_menu{
+			border: 1px solid red;
+			width: 580px;
+			height: 50px;
+			margin: 4px 0px 0px 6px;
+			border-radius: 4px;
+			background:#D76326;
+		}
+		.div_MC6_menu{
+			border:1px solid red;
+			width:130px;
+			height: 200px;
+			float: left;
+			margin: 4px 0px 0px 7px;
+		}
+		.div_MC6_menu_picture{
+			width:120px;
+			height: 100px;
+			margin: 3px 0px 0px 4px;
+			float: left;
+		}
+		p,span{
+			color: white;
+		}
+	</style>
+	<body>
+		<script type="text/javascript" src="js/jquery-1.11.3.js" ></script>
+		
+		<div id="div_MCmain" style="background: transparent; display: none;">
+			<div id="div_MC1">
+				<div id="div_MC1_picture"><img src="images/菜式/夏日冰爽下午茶套餐.jpg" width="100%" height="100%"></div>
+				<div id="div_MC1_span">
+					<p>酸菜鲁罗豪华双人套餐</p>
+					<p>价格:<span class="span_MC1">￥45.9</span></p>
+					<span>已售<span class="span_MC1">451</span>件</span>
+				</div>
+			</div>
+			<div id="div_MC2">
+				<p>食品销售时段<span>10:30-22:00</span></p>
+			</div>
+			<div id="div_MC3">
+				<div class="div_MC3_div"><span>辣骨豪华单人套餐</span></div>
+				<div class="div_MC3_div"><span>辣骨豪华单人套餐</span></div>
+				<div class="div_MC3_div"><span>辣骨豪华单人套餐</span></div>
+				<div class="div_MC3_div"><span>辣骨豪华单人套餐</span></div>
+				<div class="div_MC3_div"><span>辣骨豪华单人套餐</span></div>
+				<div class="div_MC3_div"><span>辣骨豪华单人套餐</span></div>
+			</div>
+			<div id="div_MC4">
+				<div id="div_MC4_input">
+					<input type="button" value="立即购买" style="background: greenyellow;margin: 7px 0px 0px 10px;width: 100px;height: 40px;border-radius: 3px;border:none;">
+					<input type="button" value="加入购物车" style="background: #D01B1E;margin: 7px 0px 0px 10px;width: 100px;height: 40px;border-radius: 3px;border:none;color: white;">
+				</div>
+			</div>
+			<div id="div_MC5">
+				<div id="div_MC5_menu"><p style="margin: 15px 0px 0px 14px;">热销推荐</p></div>
+			</div>
+			<div id="div_MC6">
+				<div class="div_MC6_menu">
+					<div class="div_MC6_menu_picture"><img src="images/菜式/bb.jpg" width="100%" height="100%"></div>
+					<p style="margin: 10px 0px 0px 20px;">外婆家的菜</p>
+					<p style="margin: 10px 0px 0px 24px;">￥34.5</p>
+				</div>
+				<div class="div_MC6_menu">
+					<div class="div_MC6_menu_picture"><img src="images/菜式/bb.jpg" width="100%" height="100%"></div>
+					<p style="margin: 10px 0px 0px 20px;">外婆家的菜</p>
+					<p style="margin: 10px 0px 0px 24px;">￥34.5</p>
+				</div>
+				<div class="div_MC6_menu">
+					<div class="div_MC6_menu_picture"><img src="images/菜式/bb.jpg" width="100%" height="100%"></div>
+					<p style="margin: 10px 0px 0px 20px;">外婆家的菜</p>
+					<p style="margin: 10px 0px 0px 24px;">￥34.5</p>
+				</div>
+				<div class="div_MC6_menu">
+					<div class="div_MC6_menu_picture"><img src="images/菜式/bb.jpg" width="100%" height="100%"></div>
+					<p style="margin: 10px 0px 0px 20px;">外婆家的菜</p>
+					<p style="margin: 10px 0px 0px 24px;">￥34.5</p>
+				</div>
+				<div class="div_MC6_menu">
+					<div class="div_MC6_menu_picture"><img src="images/菜式/bb.jpg" width="100%" height="100%"></div>
+					<p style="margin: 10px 0px 0px 20px;">外婆家的菜</p>
+					<p style="margin: 10px 0px 0px 24px;">￥34.5</p>
+				</div>
+				<div class="div_MC6_menu">
+					<div class="div_MC6_menu_picture"><img src="images/菜式/bb.jpg" width="100%" height="100%"></div>
+					<p style="margin: 10px 0px 0px 20px;">外婆家的菜</p>
+					<p style="margin: 10px 0px 0px 24px;">￥34.5</p>
+				</div>
+				<div class="div_MC6_menu">
+					<div class="div_MC6_menu_picture"><img src="images/菜式/bb.jpg" width="100%" height="100%"></div>
+					<p style="margin: 10px 0px 0px 20px;">外婆家的菜</p>
+					<p style="margin: 10px 0px 0px 24px;">￥34.5</p>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>

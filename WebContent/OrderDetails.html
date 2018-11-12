@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单信息</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <!--  图标-->
+<link rel="shortcut icon" href="//www.suning.com/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="js/layui/css/layui.css" />
+<link href="css/style.css" rel="stylesheet">
+<link href="css/index.css" rel="stylesheet">
+    <style type="text/css">
+        .anordertitle{
+            height: 45px;
+            line-height: 45px;
+            background: #e4e4e4;
+            color: #1e1e1e;
+            padding:0 30px ;
+
+        }
+
+        .font18{
+            font-size: 18px;
+        }
+		#a{
+			
+			width:100%;
+			height:900px;
+			margin:auto;
+		}
+    </style>
+</head>
+
+<body>
+<!-- 头部 -->
+<div style=" background:url(images/kfbg.jpg);">
+<div style="float:left;padding-left: 30px;">
+ 	<img alt="" src="images/degal.png">
+ 	<h1 style="color:white;font-size: 40px;font-style:oblique ">美食汇</h1>
+ 	<div style="position: relative;top: -30px;left: 160px;">
+ 		<i style="color:white;" class="layui-icon layui-icon-location"></i>
+ 		<span style="color: white;font-size: 15px;">珠海市</span>
+ 		<!--  更换-->
+ 		<div id="position">
+ 			<span style="color: white;padding-left: 10px;">更换</span>
+ 		</div>
+ 	</div>
+ </div>
+ <div>
+	<div id="guide" style="float:right;position: relative;top: 60px">
+		<ul>
+			<li><a href="indexmain1.html" id="indexmain" style="color:#fff100;">首页</a></li>
+			<li><a href="index.html" id="deliciousfood">美味菜单</a></li>
+			<li><a href="index.html">热销促销</a></li>
+			<li id="vipcenter">会员中心</li>
+			<li><a id="showbuycar" style="cursor: pointer;">购物车</a><i class="layui-icon layui-icon-cart"></i>
+				<!-- 购物车数量 -->
+				<div id="cartCount">0</div>
+			</li>
+			<li id="login">登录</li>
+			<!-- <li id="regsist">注册</li> -->
+			<li id="exit">退出</li>
+		</ul>
+	</div>
+	
+	<!-- 黄线 -->
+ <div id="yellowline">
+	<hr  style="height:5px;background:#fff100"/>
+</div> 
+</div>
+</div>
+<!-- 中间部分 -->
+	<div id="a">
+    <div>
+        <h3 class="anordertitle font18">订单信息</h3>
+    </div>
+
+    <div class="ordetailstuas mtb10 over">
+        <ul class="staus">
+            <li class="stausa current">已下单</li>
+            <li class="stausb">商家确认</li>
+            <li class="stausc">备餐中</li>
+            <li class="stausd">送餐中</li>
+            <li class="stause">已送达 </li>
+        </ul>
+    </div>
+    <div class="mtb10 font14 detailstuasuser"><span id="useradd">李乐乐</span><span id="userphone">13671462632</span><span id="userpharr">福州市晋安区斗门-地铁站 珠海南方it学院</span></div>
+    <div class="stuastext mtb10 font14 none orderDetail_fotb">
+        <div class="textstu"><p class="ordtexta">已下单</p><p class="col timetime">2018-07-28 11:24:59</p></div>
+        <div class="stuasbtn cursor" id="evaluate">评 价</div>
+        <a href="javascript:;" class="stuasbtn" id="morenote">再来一单</a>
+    </div>
+    <div class="stuastext mtb10 font14 none orderDetail_fota" style="display: block;">
+        <div class="textstu"><p class="ordtexta">已下单</p><p class="col timetime">2018-07-28 11:24:59</p></div>
+        <div class="stuasbtn cursor" id="cancellation" style="background: initial; color: #999;">取消订单</div>
+        <a href="javascript:;" class="stuasbtn" id="nowpay">立即支付</a>
+    </div>
+    <div class="stuastext mtb10 font14 none orderDetail_fotc">
+        <div class="textstu"><p class="ordtexta">已下单</p><p class="col timetime">2018-07-28 11:24:59</p></div>
+        <div class="stuasbtn cursor" id="evaluate" style="background: initial; color: #999;>订单已取消</div>
+							<a href=" javascript:;"="">再来一单
+    </div>
+    </div>
+
+    <div class="listanorder over">
+        <div class="antitle font18 mtb20">订单内容</div>
+        <div class="ordernum"><span>订单编号：<span id="orderid">GFS20180728112459111</span></span><span class="fr" id="piao">发票：未开发票</span></div>
+        <div class="titlelist over mt5">
+            <div class="width1">餐品</div>
+            <div class="width2">单价（元）</div>
+            <div class="width5">数量</div>
+            <div class="width3">优惠方式</div>
+            <div class="width4">小计</div>
+
+        </div>
+        <ul class="listorder over listordera orderInformationOne"><li><div class="width1"><img src="http://de.zkungfu.com/sites/default/files/product_image/p_big/%E9%A5%BF%E6%A3%8D%E7%9A%AE%E8%9B%8B%E7%98%A6%E8%82%89%E7%B2%A5.jpg"><h2 class="font14">饿棍皮蛋瘦肉粥GFS</h2></div><div class="width2">¥14.00</div><div class="width5"><span>x1</span></div><div class="width3 red"></div><div class="width4 red">¥14.00</div></li></ul>
+
+    </div>
+    <div class="listanorder over">
+        <div class="antitle font18 mtb20">其他信息</div>
+        <!--<div class="mtb10 font18 invoice">是否索要发票：是</div>-->
+      	<!--  <img style="background:url(images/green.png);
+			width:23px;
+			height:20px;    
+			position: relative;
+    		top:-10px;"
+			/>-->
+        <div class="mtb10 font18 green" >
+       	 积极参与绿色环保，创建绿色家园！</div>
+        <div class="mtb10 font18 invoice">不需筷子，自备筷子：是</div>
+        <div class="mtb10 font18 invoice" id="memo">订单备注:无</div>
+    </div>
+    <div class="listanorder over anordermoney anordermoney">
+        <div class="moneyanorder">
+            <p><span class="red">实付总额：</span><span class="red" id="ordernowprice">20.00</span></p>
+            <!--<p><span>餐品总额：</span><span class="orderoldprice"></span></p>-->
+            <!--<p><span>配送费：</span><span class="routerfee"></span></p>
+            <p><span>优惠金额：</span><span class="allpromtion"></span></p>-->
+            <p class="peisongfei"><span>含配送费：</span><span class="routerfee">￥6.00</span></p>
+            <p class="packgefei" style="display: none;"><span>含餐盒费：</span><span id="packagefee"></span></p>
+            <p class="youhuimoney" style="display: none;"><span>优惠金额：</span><span class="allpromtion">-￥0.00</span></p>
+        </div>
+    </div>
+</div>
+
+	<!-- 底部嵌套 -->
+	<iframe src="end.html" style="float: left;width:100%; height: 300px;border: none;"></iframe>
+</body>
+</html>

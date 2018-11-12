@@ -1,0 +1,102 @@
+		#div_mainOrderrs{
+			width:820px;
+			height: 600px;
+			background: white;
+		}
+		#div_centerOrderrs{
+			width:820px;
+			height:50px;
+			float: left;
+			background: white;
+			margin-top: 10px;
+		}
+		#div_centerOrderrs span{
+			display: inline-block;
+			color: red;
+			line-height: 50px;
+		}
+		#span1{
+			margin-left: 20px;
+		}
+		#span2{
+			margin-left: 27px;
+		}
+		#span3{
+			margin-left: 270px;
+		}
+		#span4,#span5{
+			margin-left: 80px;
+		}
+		#div_bottomOrderrs{
+			width:820px;
+			height: 450px;
+			overflow:Scroll;
+			margin-top: 5px;
+			float: left;
+		}
+		.div_dd{
+			border-bottom: 1px dashed darkgoldenrod;
+			width:700px;
+			height: 90px;
+			margin-left: 67px;
+		}
+		.div_dd_content{
+			width:100px;
+			height: 80px;
+			float: left;
+			margin-top: 5px;
+			margin-left: 5px;
+		}
+		.div_dd_content_right{
+			width:200px;
+			height: 80px;
+			float: left;
+			margin-top: 5px;
+			margin-left: 5px;
+		}
+		.div_dd_content_span1{
+			width:100px;
+			height: 80px;
+			float: left;
+			margin-top: 5px;
+			margin-left: 15px;
+		}
+		.div_dd_content_span2{
+			width:100px;
+			height: 80px;
+			float: left;
+			margin-top: 5px;
+			margin-left: 15px;
+		}
+		.div_dd_content_span3{
+			width:110px;
+			height: 80px;
+			float: left;
+			margin-top: 5px;
+			margin-left: 20px;
+		}
+		.div_dd_content_right_span1{
+			font-size: 12px;
+			color: black;
+			font-family: "Î¢ÈíÑÅºÚ";
+		}
+		.div_dd_content_right_span{
+			font-size: 12px;
+		}
+		.div_dd_content_right_span1_span{
+			font-size: 15px;
+			color: black;
+			font-family: "Î¢ÈíÑÅºÚ";
+			display: inline-block;
+			margin-top: 10px;
+			margin-left: 19px;
+		}
+		.div_dd_content_right_span_span{
+			font-size: 12px;
+			display: inline-block;
+			margin-left: 19px;
+		}
+		.layui-btn{
+			margin-top: 2px;
+			margin-left: 10px;
+		}

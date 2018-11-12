@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>table模块快速使用</title>
+		<link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all">
+		
+		<link rel="stylesheet" type="text/css" href="js/artDialog7/css/dialog.css"/>
+	</head>
+	<style>
+		#formUser{
+			display:none;
+		} 
+	
+	</style>
+	<body>
+	<script type="text/javascript" src="js/jquery-1.11.3.js" ></script>
+	<script src="js/artDialog7/dist/dialog.js" type="text/javascript" charset="utf-8"></script>
+		<div class="layui-btn-group demoTable">
+		  <button class="layui-btn" id="shuxin">刷新</button>
+		</div>
+		<input type="button" value="导出XLS表" id="aa"/>
+
+		<!-- <input type="button" value="导出" id="aa"/> -->
+		<table class="layui-hide" id="test" lay-filter="test"></table>
+		<script src="./plugins/layui/layui.js"></script>
+		<script src="js/jquery-1.11.3.js"></script>
+		<script>
+         //JavaScript代码区域
+         layui.use('element', function() {
+             var element = layui.element;
+
+         });
+         layui.use('table', function(){
+               var table = layui.table;
+               //第一个实例
+               table.render({
+                 elem: '#test'
+                 ,height: 515
+                 ,url: 'newadd?list=Xorder'
+                 ,page: true 
+                 ,cols: [[
+                	 {field: 'oNumber', title: '订单编号', width:180, sort: true, fixed: 'left'}
+                     ,{field: 'oorderDate', title: '时间', width:300,sort: true}
+                     ,{field: 'oremark', title: '评语', width:300,sort: true}
+                 ]]
+               });
+               
+             });
+		</script>
+	</body>
+</html>
